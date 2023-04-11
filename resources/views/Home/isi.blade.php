@@ -89,7 +89,7 @@
             <span class="visually-hidden">Previous</span>
         </button>
         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="next" style="width: 5%"">
+            data-bs-slide="next" style="width: 5%">
             <i class="fa-solid fa-circle-chevron-right fa-2x"></i>
             <span class="visually-hidden">Next</span>
         </button>
@@ -304,57 +304,20 @@
             </div>
         </div>
         <div id="carouselExampleControls" class="carousel slide carouselberita" data-bs-ride="carousel">
-            <div class="carousel-inner role="listbox"">
-                <div class="carousel-item carouseljs active">
-                    <div class="card m-2 text-start" style="width: 30rem;">
-                        <img src="{{ asset('image/nw122.jpg') }}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title text-default">Siswa Brigjend Katamso peraih prestasi peserta teraktif
-                                dalam seminar
-                                suskes dalam membangun usaha</h5>
-                            <p class="card-text fs-6">Terima-kasih kepada Bp. Darmawan A P Dasuha, S.Sos., MM. (HR & GA
-                                Manager,
-                                PT Prodia Widyahusada, Tbk. - Wilayah Sumatera), narasumber yang mengisi ac...
-                            </p>
-                            <a href="#" class="btn button-color text-white fs-6">Selengkapnya...</a>
+            <div class="carousel-inner" role='listbox'>
+                @foreach($newsActivities as $item )
+                    <div class="carousel-item carouseljs active">
+                        <div class="card m-2 text-start" style="width: 30rem;">
+                            <img src="{{ asset($item->image) }}" class="card-img-top" alt="{{$item->title}}">
+                            <div class="card-body">
+                                <h5 class="card-title text-default">{{$item->title}}</h5>
+                                <p class="card-text fs-6">{{$item->content}}</p>
+                                <a href="{{$item->slug}}" class="btn button-color text-white fs-6">Selengkapnya..
+                                    .</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="carousel-item carouseljs">
-                    <div class="card m-2" style="width: 30rem;">
-                        <img src="{{ asset('image/nw123.jpg') }}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Presentasi Dan Orientasi Untuk Guru Yang Berjudul "Menuju Sekolah Yang
-                                Menjunjung Nilai - Nilai Kemanusiaan"</h5>
-                            <p class="card-text">Medan, 02 Oktober 2022. Dalam rangka Hari Anti - Kekerasan Internasional
-                                dan Peringatan Kelahiran Mahatma Gan...
-                            </p>
-                            <a href="#" class="btn button-color text-white fs-6">Selengkapnya...</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item carouseljs">
-                    <div class="card m-2" style="width: 30rem;">
-                        <img src="" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                                the card's content.</p>
-                            <a href="#" class="btn button-color text-white fs-6">Selengkapnya...</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item carouseljs">
-                    <div class="card m-2" style="width: 30rem;">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                                the card's content.</p>
-                            <a href="#" class="btn button-color text-white fs-6">Selengkapnya...</a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
