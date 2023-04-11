@@ -56,3 +56,5 @@ Route::get('/PrestasiNonAkademik', function () {
 Route::get('/Kontak', function () {
     return view('kontak.kontak');
 })->name('kontakbk');
+
+// test
