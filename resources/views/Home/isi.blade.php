@@ -67,25 +67,21 @@
 
 @section('content')
     {{-- carousel --}}
+
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
         <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                aria-label="Slide 3"></button>
+            @for($i = 0; $i < count($carouselImages); $i++)
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={{ $i }}
+                    class="{{ $i == 0 ? 'active' : '' }}" aria-current="true"
+                    aria-label={{ $carouselImages[$i]->name }}></button>
+            @endfor
         </div>
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="{{ asset('image/Artboard 1.png') }}" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="{{ asset('image/Artboard 2.png') }}" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="{{ asset('image/Artboard 3.png') }}" class="d-block w-100" alt="...">
-            </div>
+            @foreach ($carouselImages as $item)
+                <div class="carousel-item active">
+                    <img src="{{ asset($item->image) }}" class="d-block w-100" alt={{ $item->name }}>
+                </div>
+            @endforeach
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
             data-bs-slide="prev" style="width: 5%">

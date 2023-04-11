@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MainApp\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('Home.isi');
-})->name('beranda');
+Route::get('/', [HomeController::class, 'index'])->name('beranda');
 
 Route::get('/UnitTKdanPG', function () {
     return view('Unit.unittk');
@@ -56,5 +55,3 @@ Route::get('/PrestasiNonAkademik', function () {
 Route::get('/Kontak', function () {
     return view('kontak.kontak');
 })->name('kontakbk');
-
-// test
