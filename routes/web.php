@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MainApp\ContactController;
 use App\Http\Controllers\MainApp\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -52,6 +53,4 @@ Route::get('/PrestasiNonAkademik', function () {
     return view('Prestasi.nonakademik');
 })->name('nonakademik');
 
-Route::get('/Kontak', function () {
-    return view('kontak.kontak');
-})->name('kontakbk');
+Route::get('/Kontak', [ContactController::class, 'index'])->name('kontakbk');

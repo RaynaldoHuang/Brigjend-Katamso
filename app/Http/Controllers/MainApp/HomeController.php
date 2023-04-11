@@ -4,6 +4,7 @@ namespace App\Http\Controllers\MainApp;
 
 use App\Http\Controllers\Controller;
 use App\Models\CarouselImage;
+use App\Models\Contact;
 use App\Models\NewsActivities;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,13 @@ class HomeController extends Controller
     {
         $carouselImages = CarouselImage::active()->get();
         $newsActivities = NewsActivities::active()->get();
+        $contact = Contact::all();
 
-        return view('Home.isi', compact('carouselImages', 'newsActivities'));
+        view()->share('contacts', $contact);
+
+        return view('Home.isi', [
+            'carouselImages' => $carouselImages,
+            'newsActivities' => $newsActivities
+        ]);
     }
 }

@@ -15,22 +15,29 @@
                     Yayasan Perguruan Nasional Brigjend Katamso 1
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="font-cairo text-default fw-bold fs-4 mt-3">
-                            Telepon
-                        </div>
-                        <div class="fw-medium mt-1">
-                            061 - 845 1582
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="font-cairo text-default fw-bold fs-4 mt-3">
-                            E-mail
-                        </div>
-                        <div class="fw-medium mt-1">
-                            <a href="">contact@ypnbrigjendkatamso.sch.id</a>
-                        </div>
-                    </div>
+                    @foreach($contacts as $contact)
+                        @if($contact->name === 'Brigjend Katamso 1' && $contact->type === 'phone')
+                            <div class="col-md-6">
+                                <div class="font-cairo text-default fw-bold fs-4 mt-3">
+                                    Telepon
+                                </div>
+                                <div class="fw-medium mt-1">
+                                    {{$contact->value }}
+                                </div>
+                            </div>
+                        @endif
+
+                        @if($contact->name === 'Brigjend Katamso 1' && $contact->type === 'email')
+                            <div class="col-md-6">
+                                <div class="font-cairo text-default fw-bold fs-4 mt-3">
+                                    E-mail
+                                </div>
+                                <div class="fw-medium mt-1">
+                                    <a href="">{{$contact->value}}</a>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
                 </div>
             </div>
             <div class="col-md-6">
@@ -45,22 +52,29 @@
                     Yayasan Perguruan Nasional Brigjend Katamso 2
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="font-cairo text-default fw-bold fs-4 mt-3">
-                            Telepon
-                        </div>
-                        <div class="fw-medium mt-1">
-                            061 - 685 4666
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="font-cairo text-default fw-bold fs-4 mt-3">
-                            E-mail
-                        </div>
-                        <div class="fw-medium mt-1">
-                            <a href="">contact@ypnbrigjendkatamso.sch.id</a>
-                        </div>
-                    </div>
+                    @foreach($contacts as $contact)
+                        @if($contact->name === 'Brigjend Katamso 1' && $contact->type === 'phone')
+                            <div class="col-md-6">
+                                <div class="font-cairo text-default fw-bold fs-4 mt-3">
+                                    Telepon
+                                </div>
+                                <div class="fw-medium mt-1">
+                                    {{$contact->value }}
+                                </div>
+                            </div>
+                        @endif
+
+                        @if($contact->name === 'Brigjend Katamso 1' && $contact->type === 'email')
+                            <div class="col-md-6">
+                                <div class="font-cairo text-default fw-bold fs-4 mt-3">
+                                    E-mail
+                                </div>
+                                <div class="fw-medium mt-1">
+                                    <a href="">{{$contact->value}}</a>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
                 </div>
             </div>
             <div class="font-cairo text-default fw-bold fs-2 text-center mt-5">
