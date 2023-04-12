@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             NewsActivitiesSeeder::class,
             ContactSeeder::class,
             AchievementSeeder::class,
+            UnitsSeeder::class,
         ]);
     }
 }
