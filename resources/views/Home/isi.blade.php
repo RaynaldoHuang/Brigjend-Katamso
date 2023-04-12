@@ -2,7 +2,7 @@
 
 @section('custom.css')
     <style>
-        #carouselberita .carousel-inner .carousel-item>div {
+        #carouselberita .carousel-inner .carousel-item > div {
             position: relative;
         }
 
@@ -11,11 +11,11 @@
         }
 
         @media (max-width: 767px) {
-            #carouselberita .carousel-inner .carousel-item>div {
+            #carouselberita .carousel-inner .carousel-item > div {
                 display: none;
             }
 
-            #carouselberita .carousel-inner .carousel-item>div:first-child {
+            #carouselberita .carousel-inner .carousel-item > div:first-child {
                 display: block;
             }
         }
@@ -73,7 +73,7 @@
             @for($i = 0; $i < count($carouselImages); $i++)
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={{ $i }}
                     class="{{ $i == 0 ? 'active' : '' }}" aria-current="true"
-                    aria-label={{ $carouselImages[$i]->name }}></button>
+                        aria-label={{ $carouselImages[$i]->name }}></button>
             @endfor
         </div>
         <div class="carousel-inner">
@@ -84,25 +84,27 @@
             @endforeach
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="prev" style="width: 5%">
+                data-bs-slide="prev" style="width: 5%">
             <i class="fa-solid fa-circle-chevron-left fa-2x"></i>
             <span class="visually-hidden">Previous</span>
         </button>
         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="next" style="width: 5%">
+                data-bs-slide="next" style="width: 5%">
             <i class="fa-solid fa-circle-chevron-right fa-2x"></i>
             <span class="visually-hidden">Next</span>
         </button>
     </div>
 
     {{-- welcome-text --}}
-    <div class="text1 d-flex justify-content-center align-items-center" style="background-color:#060585;height:60px">
+    <div class="text1 d-flex justify-content-center align-items-center"
+         style="background-color:#060585;height:60px">
         <h4 class="text-white m-0">Selamat Datang di Yayasan Nasional Brigjend Katamso</h4>
     </div>
 
     {{-- why-text --}}
     <div class="text2 mt-5 mb-4">
-        <h1 class="d-flex justify-content-center fs-1 fw-bold font-cairo text-default">Kenapa Brigjend Katamso ?</h1>
+        <h1 class="d-flex justify-content-center fs-1 fw-bold font-cairo text-default">Kenapa Brigjend Katamso
+            ?</h1>
         <h5 class="d-flex justify-content-center fs-6 fw-normal text-default">Kenapa kamu harus sekolah
             Brigjend Katamso?</h5>
     </div>
@@ -121,7 +123,8 @@
                         </li>
                     </ul>
                     <div class="text-white mt-3">
-                        Berhasil mencetak siswa - siswi yang cerdas dan berprestasi di bidang akademik maupun non
+                        Berhasil mencetak siswa - siswi yang cerdas dan berprestasi di bidang akademik maupun
+                        non
                         akademik.
                     </div>
                 </div>
@@ -137,7 +140,8 @@
                         </li>
                     </ul>
                     <div class="text-white mt-3">
-                        Dibimbing oleh guru yang berpengalaman dan berprestasi di bidangnya serta dapat memberikan
+                        Dibimbing oleh guru yang berpengalaman dan berprestasi di bidangnya serta dapat
+                        memberikan
                         pendidikan yang bermutu.
                     </div>
                 </div>
@@ -153,7 +157,8 @@
                         </li>
                     </ul>
                     <div class="text-white mt-3">
-                        Banyak ekstrakurikuler yang disediakan untuk melatih minat siswa dalam bidang yang disukainya.
+                        Banyak ekstrakurikuler yang disediakan untuk melatih minat siswa dalam bidang yang
+                        disukainya.
                     </div>
                 </div>
             </div>
@@ -169,7 +174,8 @@
                         </li>
                     </ul>
                     <div class="text-white mt-3">
-                        Adanya pembelajaran pendidikan nilai - nilai kemanusiaan (PNK) dalam lingkungan sekitar.
+                        Adanya pembelajaran pendidikan nilai - nilai kemanusiaan (PNK) dalam lingkungan
+                        sekitar.
                     </div>
                 </div>
             </div>
@@ -263,13 +269,16 @@
     <div class="container w-100 mt-4 unit-custom mb-4">
         <div class="row text-center d-flex justify-content-evenly">
             <div class="col-md-2 px-auto mb-4">
-                <img src="{{ asset('image/unit tk.png') }}" alt="" class="img-fluid" style="max-height: 300px">
+                <img src="{{ asset('image/unit tk.png') }}" alt="" class="img-fluid"
+                     style="max-height: 300px">
             </div>
             <div class="col-md-2 px-auto mb-4">
-                <img src="{{ asset('image/unit tk.png') }}" alt="" class="img-fluid" style="max-height: 300px">
+                <img src="{{ asset('image/unit tk.png') }}" alt="" class="img-fluid"
+                     style="max-height: 300px">
             </div>
             <div class="col-md-2 px-auto mb-4">
-                <img src="{{ asset('image/unit sd.png') }}" alt="" class="img-fluid" style="max-height: 300px">
+                <img src="{{ asset('image/unit sd.png') }}" alt="" class="img-fluid"
+                     style="max-height: 300px">
             </div>
             <div class="col-md-2 px-auto mb-4">
                 <img src="{{ asset('image/UNIT 1.png') }}" alt="" class="img-fluid" style="max-height: 300px">
@@ -294,11 +303,11 @@
             </div>
             <div class="col-6 text-end">
                 <a class="btn" href="#carouselExampleControls" role="button" data-bs-slide="prev"
-                    style="background-color: #efa343">
+                   style="background-color: #efa343">
                     <i class="fa fa-arrow-left"></i>
                 </a>
                 <a class="btn" href="#carouselExampleControls" role="button" data-bs-slide="next"
-                    style="background-color: #efa343">
+                   style="background-color: #efa343">
                     <i class="fa fa-arrow-right"></i>
                 </a>
             </div>

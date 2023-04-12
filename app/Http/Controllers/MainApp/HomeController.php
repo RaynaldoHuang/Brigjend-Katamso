@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\CarouselImage;
 use App\Models\Contact;
 use App\Models\NewsActivities;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -20,7 +19,7 @@ class HomeController extends Controller
 
         return view('Home.isi', [
             'carouselImages' => $carouselImages,
-            'newsActivities' => $newsActivities
+            'newsActivities' => $newsActivities,
         ]);
     }
 }
