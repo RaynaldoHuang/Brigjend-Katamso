@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\MainApp\ContactController;
 use App\Http\Controllers\MainApp\HomeController;
+use App\Models\Achievements;
 use App\Models\Contact;
 use Illuminate\Support\Facades\Route;
 
@@ -62,23 +63,37 @@ Route::get('/KupuKupuTransformationCenter', function () {
 
 Route::get('/SBMPTN&SNMPTN', function () {
     $contact = Contact::all();
+    $achievementSbmptn = Achievements::published()->type('sbmptn')->get();
+    $achievementSnmptn = Achievements::published()->type('snmptn')->get();
+
     view()->share('contacts', $contact);
 
-    return view('Prestasi.negeri');
+    return view('Prestasi.negeri', [
+        'sbmptn' => $achievementSbmptn,
+        'snmptn' => $achievementSnmptn,
+    ]);
 })->name('lulusannegeri');
 
 Route::get('/PrestasiAkademik', function () {
     $contact = Contact::all();
+    $akademik = Achievements::published()->type('akademik')->get();
+
     view()->share('contacts', $contact);
 
-    return view('Prestasi.akademik');
+    return view('Prestasi.akademik', [
+        'akademik' => $akademik,
+    ]);
 })->name('akademik');
 
 Route::get('/PrestasiNonAkademik', function () {
     $contact = Contact::all();
+    $nonAkademik = Achievements::published()->type('non-akademik')->get();
+
     view()->share('contacts', $contact);
 
-    return view('Prestasi.nonakademik');
+    return view('Prestasi.nonakademik', [
+        'nonAkademik' => $nonAkademik,
+    ]);
 })->name('nonakademik');
 
 Route::get('/Kontak', [ContactController::class, 'index'])->name('kontakbk');

@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             CarouselImageSeeder::class,
             NewsActivitiesSeeder::class,
             ContactSeeder::class,
+            AchievementSeeder::class,
         ]);
     }
 }
