@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\MainApp\AboutController;
 use App\Http\Controllers\MainApp\ContactController;
 use App\Http\Controllers\MainApp\HomeController;
 use App\Http\Controllers\MainApp\PrestasiController;
+use App\Http\Controllers\MainApp\UnitController;
 use App\Models\Contact;
 use Illuminate\Support\Facades\Route;
 
@@ -19,12 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('beranda');
 
-Route::get('/UnitTKdanPG', function () {
-    $contact = Contact::all();
-    view()->share('contacts', $contact);
-
-    return view('Unit.unittk');
-})->name('unittkdanpg');
+Route::get('/UnitTKdanPG', [UnitController::class, 'unitTkDanPg'])->name('unittkdanpg');
 
 Route::get('/BrosurTKdanPG', function () {
     $contact = Contact::all();
@@ -33,12 +30,7 @@ Route::get('/BrosurTKdanPG', function () {
     return view('brosur.tkbrosur');
 })->name('brosurtkdanpg');
 
-Route::get('/TentangKami', function () {
-    $contact = Contact::all();
-    view()->share('contacts', $contact);
-
-    return view('tentangkami.about');
-})->name('tentangkami');
+Route::get('/TentangKami', [AboutController::class, 'index'])->name('tentangkami');
 
 Route::get('/BrigjendKatamso2', function () {
     $contact = Contact::all();

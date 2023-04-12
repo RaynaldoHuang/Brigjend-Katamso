@@ -14,4 +14,9 @@ class Units extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function unitImage()
+    {
+        return $this->hasMany(UnitImage::class);
+    }
 }

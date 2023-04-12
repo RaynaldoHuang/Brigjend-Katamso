@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             ContactSeeder::class,
             AchievementSeeder::class,
             UnitsSeeder::class,
+            UnitImageSeeder::class,
         ]);
     }
 }
