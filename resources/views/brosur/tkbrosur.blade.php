@@ -14,11 +14,10 @@
 
     {{-- image --}}
     <div class="container mb-4" style="background-color: #eaeaea">
-        <div class="text-center pt-3">
-            <img src="{{ asset('image/brosur SD front.png') }}" alt="" class="img-fluid">
-        </div>
-        <div class="text-center pt-3 pb-3">
-            <img src="{{ asset('image/brosur SD back.jpg') }}" alt="" class="img-fluid">
-        </div>
+        @foreach($brosur as $item)
+            <div class="text-center pt-3">
+                <img src="{{ asset($item->brosur) }}" alt="" class="img-fluid">
+            </div>
+        @endforeach
     </div>
 @endsection

@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             UnitsSeeder::class,
             UnitImageSeeder::class,
             UnitExtraSeeder::class,
+            UnitBrosurSeeder::class,
         ]);
     }
 }

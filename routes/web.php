@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MainApp\AboutController;
+use App\Http\Controllers\MainApp\BrosurController;
 use App\Http\Controllers\MainApp\ContactController;
 use App\Http\Controllers\MainApp\HomeController;
 use App\Http\Controllers\MainApp\PrestasiController;
@@ -23,12 +24,7 @@ Route::get('/', [HomeController::class, 'index'])->name('beranda');
 
 Route::get('/UnitTKdanPG', [UnitController::class, 'unitTkDanPg'])->name('unittkdanpg');
 
-Route::get('/BrosurTKdanPG', function () {
-    $contact = Contact::all();
-    view()->share('contacts', $contact);
-
-    return view('brosur.tkbrosur');
-})->name('brosurtkdanpg');
+Route::get('/BrosurTKdanPG', [BrosurController::class, 'tkDanPg'])->name('brosurtkdanpg');
 
 Route::get('/TentangKami', [AboutController::class, 'index'])->name('tentangkami');
 
