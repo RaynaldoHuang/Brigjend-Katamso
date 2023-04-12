@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             AchievementSeeder::class,
             UnitsSeeder::class,
             UnitImageSeeder::class,
+            UnitExtraSeeder::class,
         ]);
     }
 }

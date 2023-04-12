@@ -4,6 +4,7 @@ namespace App\Http\Controllers\MainApp;
 
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
+use App\Models\UnitExtra;
 use App\Models\UnitImage;
 
 class UnitController extends Controller
@@ -12,9 +13,10 @@ class UnitController extends Controller
     {
         $contact = Contact::all();
 
-        $unitImageMain = UnitImage::published()->where('is_main', true)->where('type', 'tkdanpg')->get();
+        $unitImageMain = UnitImage::published()->main(true)->type('tkdanpg')->get();
         $unitImageTk = UnitImage::published()->main(false)->type('tk')->get();
         $unitImagePg = UnitImage::published()->main(false)->type('pg')->get();
+        $unitExtra = UnitExtra::active()->where('unit_id', 1)->get();
 
         view()->share('contacts', $contact);
 
@@ -22,6 +24,7 @@ class UnitController extends Controller
             'imageMains' => $unitImageMain,
             'imageTk' => $unitImageTk,
             'imagePg' => $unitImagePg,
+            'extrakulikuler' => $unitExtra,
         ]);
     }
 

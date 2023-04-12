@@ -65,47 +65,16 @@
 
     {{-- gambar2 --}}
     <div class="container w-100 mt-4 mb-5">
-        <div class="row">
-            <div class="text-center col-md-4">
-                <img src="{{ asset('image/image3.png') }}" alt="" style="max-width: 400px">
-                <div class="font-cairo text-default fw-bold fs-3 text-center mt-1">
-                    Menari
+        <div class="row d-flex justify-content-center align-items-center gy-5">
+            @foreach($extrakulikuler as $item)
+                <div class="col-md-4 d-flex justify-content-center align-items-center flex-column">
+                    <img src="{{ asset($item->image) }}" alt="{{$item->alt}}"
+                         style="max-width: 400px">
+                    <div class="font-cairo text-default fw-bold fs-3 text-center mt-1">
+                        {{ $item->name }}
+                    </div>
                 </div>
-            </div>
-            <div class="text-center col-md-4">
-                <img src="{{ asset('image/image3.png') }}" alt="" style="max-width: 400px">
-                <div class="font-cairo text-default fw-bold fs-3 text-center mt-1">
-                    Angklung
-                </div>
-            </div>
-            <div class="text-center col-md-4">
-                <img src="{{ asset('image/image3.png') }}" alt="" style="max-width: 400px">
-                <div class="font-cairo text-default fw-bold fs-3 text-center mt-1">
-                    Mewarnai & Menggambar
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container w-100 mt-4 mb-5">
-        <div class="row">
-            <div class="text-center col-md-4">
-                <img src="{{ asset('image/image3.png') }}" alt="" style="max-width: 400px">
-                <div class="font-cairo text-default fw-bold fs-3 text-center mt-1">
-                    Senam
-                </div>
-            </div>
-            <div class="text-center col-md-4">
-                <img src="{{ asset('image/image3.png') }}" alt="" style="max-width: 400px">
-                <div class="font-cairo text-default fw-bold fs-3 text-center mt-1">
-                    Bernyanyi
-                </div>
-            </div>
-            <div class="text-center col-md-4">
-                <img src="{{ asset('image/image3.png') }}" alt="" style="max-width: 400px">
-                <div class="font-cairo text-default fw-bold fs-3 text-center mt-1">
-                    Story Telling
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 @endsection
