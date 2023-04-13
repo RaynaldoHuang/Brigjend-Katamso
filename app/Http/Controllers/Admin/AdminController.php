@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Services\AdminServices;
+use App\Services\AdminService;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -27,7 +27,7 @@ class AdminController extends Controller
         ]);
     }
 
-    public function store(Request $request, AdminServices $adminServices)
+    public function store(Request $request, AdminService $adminServices)
     {
         $validate = $adminServices->validateInput($request);
 
@@ -49,7 +49,7 @@ class AdminController extends Controller
         return view('admin.dashboard.access.create');
     }
 
-    public function changePassword(Request $request, AdminServices $adminServices)
+    public function changePassword(Request $request, AdminService $adminServices)
     {
         $validate = $adminServices->validatePassword($request);
 
@@ -58,7 +58,7 @@ class AdminController extends Controller
         }
 
         $checkPassword = $adminServices->checkPasswordIsSame($request);
-        
+
         if ($checkPassword !== true) {
             return redirect()->back()->with('validationPassword', [['Password cannot be the same as old password']]);
         }
@@ -72,7 +72,7 @@ class AdminController extends Controller
         }
     }
 
-    public function update(Request $request, string $id, AdminServices $adminServices)
+    public function update(Request $request, string $id, AdminService $adminServices)
     {
         $validate = $adminServices->validateUpdate($request);
 

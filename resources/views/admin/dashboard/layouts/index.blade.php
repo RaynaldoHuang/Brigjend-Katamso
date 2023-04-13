@@ -15,7 +15,7 @@
             @include('admin.dashboard.layouts.sidebar')
         </div>
 
-        <div class="col-10 p-0">
+        <div class="col-10 p-0 vh-100">
             <div class="w-100 h-100 overflow-auto" style="background-color: #e9ecef">
                 @include('admin.dashboard.layouts.header')
 

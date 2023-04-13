@@ -69,7 +69,16 @@ Route::prefix('admin')->group(function () {
     Route::get('reset-password', [AuthController::class, 'resetPassword'])->name('admin.reset-password');
 
     Route::get('dashboard', [DashboardController::class, 'main'])->name('admin.dashboard');
-    Route::get('carousel', [CarouselController::class, 'index'])->name('admin.carousel');
+
+    Route::get('carousel', [CarouselController::class, 'view'])->name('admin.carousel');
+
+    Route::get('carousel/create', [CarouselController::class, 'create'])->name('admin.carousel.create');
+    Route::post('carousel', [CarouselController::class, 'store'])->name('admin.carousel.store');
+
+    Route::get('carousel/{id}', [CarouselController::class, 'edit'])->name('admin.carousel.edit');
+    Route::put('carouse/{id}', [CarouselController::class, 'update'])->name('admin.carousel.update');
+
+    Route::post('carouse/{id}', [CarouselController::class, 'destroy'])->name('admin.carousel.destroy');
 
     Route::get('access', [AdminController::class, 'index'])->name('admin.access');
 
