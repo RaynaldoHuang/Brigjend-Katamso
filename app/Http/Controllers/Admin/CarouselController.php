@@ -66,9 +66,9 @@ class CarouselController extends Controller
         }
     }
 
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        $carouselImage = CarouselImage::findOrFail($id);
+        $carouselImage = CarouselImage::findOrFail($request->id);
 
         $carouselImage->delete();
 

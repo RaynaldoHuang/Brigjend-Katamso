@@ -57,10 +57,11 @@
                                         me-1">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <form action="{{route('admin.carousel.destroy', $carousel->id)}}"
+                                        <form action="{{ route('admin.carousel.destroy')}}"
                                               method="post">
                                             @csrf
                                             @method('POST')
+                                            <input type="hidden" name="id" value="{{ $carousel->id }}">
                                             <button type="submit" class="btn btn-link text-danger">
                                                 <i class="fas fa-trash"></i>
                                             </button>

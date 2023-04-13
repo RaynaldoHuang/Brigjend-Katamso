@@ -81,7 +81,7 @@ Route::prefix('admin')->group(function () {
     Route::get('carousel/{id}', [CarouselController::class, 'edit'])->name('admin.carousel.edit');
     Route::put('carouse/{id}', [CarouselController::class, 'update'])->name('admin.carousel.update');
 
-    Route::post('carouse/{id}', [CarouselController::class, 'destroy'])->name('admin.carousel.destroy');
+    Route::post('carousel', [CarouselController::class, 'destroy'])->name('admin.carousel.destroy');
 
     // Admin
     Route::get('access', [AdminController::class, 'index'])->name('admin.access');
