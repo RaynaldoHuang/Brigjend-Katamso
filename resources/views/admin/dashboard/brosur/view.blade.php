@@ -46,8 +46,10 @@
                         @foreach($brosurs as $brosur)
                             <tr>
                                 <td scope="row">{{ $loop->iteration }}</td>
-                                <td>
+                                <td class="d-flex gap-2 align-items-center">
                                     <img src="{{ asset($brosur[0]->brosur) }}"
+                                         alt="Brosur Image" class="img-fluid" style="max-width: 100px">
+                                    <img src="{{ asset($brosur[1]->brosur) }}"
                                          alt="Brosur Image" class="img-fluid" style="max-width: 100px">
                                 </td>
                                 <td class="fw-semibold">
