@@ -25,7 +25,7 @@
                             </div>
                         @endif
 
-                        <a href="#" class="btn btn-primary">
+                        <a href="{{route('admin.brosur.create')}}" class="btn btn-primary">
                             <i class="fas fa-plus"></i>
                             Add Brosur
                         </a>
@@ -47,35 +47,38 @@
                             <tr>
                                 <td scope="row">{{ $loop->iteration }}</td>
                                 <td class="d-flex gap-2 align-items-center">
-                                    <img src="{{ asset($brosur[0]->brosur) }}"
+                                    <img src="{{ asset($brosur[0]->brosur ?? null) }}"
                                          alt="Brosur Image" class="img-fluid" style="max-width: 100px">
-                                    <img src="{{ asset($brosur[1]->brosur) }}"
+                                    <img src="{{ asset($brosur[1]->brosur ?? null) }}"
                                          alt="Brosur Image" class="img-fluid" style="max-width: 100px">
                                 </td>
                                 <td class="fw-semibold">
-                                    @if($brosur[0]->unit->name == 'tk-dan-pg')
+                                    @if($brosur[0]->unit->name == 'tk-dan-pg' ?? $brosur[1]->unit->name == 'tk-dan-pg')
                                         TK & PG
-                                    @elseif($brosur[0]->unit->name == 'sd')
+                                    @elseif($brosur[0]->unit->name == 'sd' ?? $brosur[1]->unit->name == 'sd')
                                         SD
-                                    @elseif($brosur[0]->unit->name == 'smp')
+                                    @elseif($brosur[0]->unit->name == 'smp' ?? $brosur[1]->unit->name ==
+                                    'smp')
                                         SMP
-                                    @elseif($brosur[0]->unit->name == 'sma')
+                                    @elseif($brosur[0]->unit->name == 'sma' ?? $brosur[1]->unit->name ==
+                                    'sma')
                                         SMA
                                     @else
                                         SMK
                                     @endif
                                 </td>
                                 <td>
-                                    @if($brosur[0]->is_active == 1)
+                                    @if($brosur[0]->is_active == 1 ?? $brosur[1]->is_active == 1)
                                         <span class="badge bg-success">Active</span>
                                     @else
                                         <span class="badge bg-danger">Inactive</span>
                                     @endif
                                 </td>
-                                <td class="fw-semibold">{{ $brosur[0]->year }}</td>
+                                <td class="fw-semibold">{{ $brosur[0]->year ?? $brosur[1]->year }}</td>
                                 <td>
                                     <div class="d-flex gap-1">
-                                        <a href="#" class="btn
+                                        <a href="{{route('admin.brosur.edit', $brosur[0]->unit_id ?? $brosur[1]->unit_id)}}"
+                                           class="btn
                                         btn-link me-1">
                                             <i class="fas fa-edit"></i>
                                         </a>
@@ -83,7 +86,9 @@
                                         <form action="{{ route('admin.brosur.destroy') }}"
                                               method="post">
                                             @csrf
-                                            <input type="hidden" name="id" value="{{ $brosur[0]->id }}">
+                                            <input type="hidden" name="unit_id" value="{{
+                                            $brosur[0]->unit_id ?? $brosur[1]->unit_id
+                                            }}">
                                             <button type="submit" class="btn btn-link text-danger">
                                                 <i class="fas fa-trash"></i>
                                             </button>

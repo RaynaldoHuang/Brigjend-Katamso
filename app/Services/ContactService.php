@@ -30,9 +30,9 @@ class ContactService
             DB::commit();
 
             return true;
-        } catch (\Exception $e) {
-            DB::rollback();
-            return $e->getMessage();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            throw $th;
         }
     }
 
@@ -59,9 +59,9 @@ class ContactService
             DB::commit();
 
             return true;
-        } catch (\Exception $e) {
-            DB::rollback();
-            return $e->getMessage();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            throw $th;
         }
     }
 

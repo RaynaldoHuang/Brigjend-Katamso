@@ -30,9 +30,9 @@ class AdminService
             DB::commit();
 
             return true;
-        } catch (\Exception $e) {
+        } catch (\Throwable $th) {
             DB::rollBack();
-            return $e->getMessage();
+            throw $th;
         }
 
     }
@@ -108,9 +108,9 @@ class AdminService
             DB::commit();
 
             return true;
-        } catch (\Exception $e) {
+        } catch (\Throwable $th) {
             DB::rollBack();
-            return $e->getMessage();
+            throw $th;
         }
     }
 
@@ -131,9 +131,9 @@ class AdminService
             DB::commit();
 
             return true;
-        } catch (\Exception $e) {
+        } catch (\Throwable $th) {
             DB::rollBack();
-            return $e->getMessage();
+            throw $th;
         }
     }
 }

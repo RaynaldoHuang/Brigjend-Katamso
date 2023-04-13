@@ -29,9 +29,9 @@ class CarouselService
             DB::commit();
 
             return true;
-        } catch (\Exception $e) {
+        } catch (\Throwable $th) {
             DB::rollBack();
-            return $e->getMessage();
+            throw $th;
         }
     }
 
@@ -80,9 +80,9 @@ class CarouselService
             DB::commit();
 
             return true;
-        } catch (\Exception $e) {
+        } catch (\Throwable $th) {
             DB::rollBack();
-            return $e->getMessage();
+            throw $th;
         }
     }
 

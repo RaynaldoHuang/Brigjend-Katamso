@@ -77,7 +77,7 @@ Route::prefix('admin')->group(function () {
     Route::get('carousel', [CarouselController::class, 'view'])->name('admin.carousel');
 
     Route::get('carousel/create', [CarouselController::class, 'create'])->name('admin.carousel.create');
-    Route::post('carousel', [CarouselController::class, 'store'])->name('admin.carousel.store');
+    Route::post('carousel/store', [CarouselController::class, 'store'])->name('admin.carousel.store');
 
     Route::get('carousel/{id}', [CarouselController::class, 'edit'])->name('admin.carousel.edit');
     Route::put('carouse/{id}', [CarouselController::class, 'update'])->name('admin.carousel.update');
@@ -107,6 +107,12 @@ Route::prefix('admin')->group(function () {
 
     // Brosur
     Route::get('brosur', [AdminBrosurController::class, 'view'])->name('admin.brosur');
+
+    Route::get('brosur/create', [AdminBrosurController::class, 'create'])->name('admin.brosur.create');
+    Route::post('brosur/store', [AdminBrosurController::class, 'store'])->name('admin.brosur.store');
+
+    Route::get('brosur/{unitId}', [AdminBrosurController::class, 'edit'])->name('admin.brosur.edit');
+    Route::put('brosur/{unitId}', [AdminBrosurController::class, 'update'])->name('admin.brosur.update');
 
     Route::post('brosur', [AdminBrosurController::class, 'destroy'])->name('admin.brosur.destroy');
 
