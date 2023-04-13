@@ -30,10 +30,10 @@
                                    placeholder="Masukkan judul carousel" value="{{$carouselImage->name}}">
                         </div>
 
-                        {{--                        <div class="mb-3">--}}
-                        {{--                            <img src="{{asset($carouselImage->image)}}" alt="carousel image"--}}
-                        {{--                                 class="img-fluid w-75 rounded-3">--}}
-                        {{--                        </div>--}}
+                        <div class="mb-3">
+                            <img src="{{asset($carouselImage->image)}}" alt="carousel image"
+                                 class="img-fluid w-75 rounded-3">
+                        </div>
 
                         <div class="mb-3">
                             <label for="image" class="form-label">Image</label>

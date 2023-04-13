@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CarouselController;
+use App\Http\Controllers\Admin\ContactController as AdminContactController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\MainApp\AboutController;
 use App\Http\Controllers\MainApp\BrosurController;
@@ -68,8 +69,10 @@ Route::prefix('admin')->group(function () {
     Route::get('forgot-password', [AuthController::class, 'forgotPassword'])->name('admin.forgot-password');
     Route::get('reset-password', [AuthController::class, 'resetPassword'])->name('admin.reset-password');
 
+    // Dashboard Main
     Route::get('dashboard', [DashboardController::class, 'main'])->name('admin.dashboard');
 
+    // Carousel
     Route::get('carousel', [CarouselController::class, 'view'])->name('admin.carousel');
 
     Route::get('carousel/create', [CarouselController::class, 'create'])->name('admin.carousel.create');
@@ -80,6 +83,7 @@ Route::prefix('admin')->group(function () {
 
     Route::post('carouse/{id}', [CarouselController::class, 'destroy'])->name('admin.carousel.destroy');
 
+    // Admin
     Route::get('access', [AdminController::class, 'index'])->name('admin.access');
 
     Route::get('access/create', [AdminController::class, 'create'])->name('admin.access.create');
@@ -88,4 +92,15 @@ Route::prefix('admin')->group(function () {
     Route::get('access/{id}', [AdminController::class, 'edit'])->name('admin.access.edit');
     Route::put('access/{id}', [AdminController::class, 'update'])->name('admin.access.update');
     Route::post('access', [AdminController::class, 'changePassword'])->name('admin.access.change-password');
+
+    // Contact
+    Route::get('contact', [AdminContactController::class, 'view'])->name('admin.contact');
+
+    Route::get('contact/create', [AdminContactController::class, 'create'])->name('admin.contact.create');
+    Route::post('contact/store', [AdminContactController::class, 'store'])->name('admin.contact.store');
+
+    Route::get('contact/{id}', [AdminContactController::class, 'edit'])->name('admin.contact.edit');
+    Route::put('contact/{id}', [AdminContactController::class, 'update'])->name('admin.contact.update');
+
+    Route::post('contact', [AdminContactController::class, 'destroy'])->name('admin.contact.destroy');
 });

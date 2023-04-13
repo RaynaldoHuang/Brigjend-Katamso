@@ -83,5 +83,16 @@
                 </a>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col py-3">
+                <a href="{{route('admin.contact')}}" class="text-decoration-none text-white">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-phone me-3"></i>
+                        <span class="fw-semibold">Contact</span>
+                    </div>
+                </a>
+            </div>
+        </div>
     </div>
 </aside>
