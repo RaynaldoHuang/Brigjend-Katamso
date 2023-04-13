@@ -12,7 +12,13 @@
                 </div>
 
                 <div class=" mt-2">
-                    <div class="d-flex justify-content-end">
+                    <div class="d-flex justify-content-end gap-2 align-items-center">
+                        @if(session('success'))
+                            <div class="text-success fw-semibold" role="alert">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
                         <a href="{{ route('admin.access.create') }}" class="btn btn-primary">
                             <i class="fas fa-plus"></i>
                             Tambah
@@ -31,20 +37,33 @@
                         </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>John Doe</td>
-                                <td>jhondoe@gmail.com</td>
-                                <td>2021-08-01 12:00:00</td>
-                                <td>Active</td>
-                                <td>
-                                    <div class="d-flex gap-1">
-                                        <button class="btn btn-link me-1">
+                        @if($users->count() > 0)
+                            @foreach($users as $user)
+                                <tr>
+                                    <th scope="row" class="py-3">{{ $loop->iteration }}</th>
+                                    <td class="py-3">{{ $user->name }}</td>
+                                    <td class="py-3">{{ $user->email }}</td>
+                                    <td class="py-3">{{ $user->created_at }}</td>
+                                    <td class="py-3">
+                                        @if($user->status == 1)
+                                            <span class="badge bg-success">Aktif</span>
+                                        @else
+                                            <span class="badge bg-danger">Tidak Aktif</span>
+                                        @endif
+                                    </td>
+                                    <td class="py-3">
+                                        <a href="{{ route('admin.access.edit', $user->id) }}"
+                                           class="btn btn-sm btn-link fs-6 py-0">
                                             <i class="fas fa-edit"></i>
-                                        </button>
-                                    </div>
-                                </td>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @else
+                            <tr>
+                                <td colspan="6" class="text-center py-3">Tidak ada data</td>
                             </tr>
+                        @endif
                         </tbody>
                     </table>
                 </div>

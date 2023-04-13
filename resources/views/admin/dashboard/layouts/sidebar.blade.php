@@ -3,7 +3,7 @@
     <div class="px-4 pt-4">
         <div class="row">
             <div class="col">
-                <h5 class="text-center">Brigjend Katamso</h5>
+                {{--                <h5 class="text-center">Brigjend Katamso</h5>--}}
             </div>
         </div>
 
