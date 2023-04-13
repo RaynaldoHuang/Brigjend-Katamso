@@ -6,7 +6,7 @@
         <div class="col-12">
             <div class="bg-white p-4 rounded-3">
                 <div class=" border-bottom border-dark border-opacity-25">
-                    <h5>Admin Access</h5>
+                    <h5>Admin</h5>
                     <p class="text-muted">Menu ini bertujuan untuk menambahkan, mengedit, atau menghapus
                         akun admin pada website.</p>
                 </div>
