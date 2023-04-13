@@ -23,7 +23,7 @@ class AdminController extends Controller
         $users = User::findOrfail($id);
 
         return view('admin.dashboard.access.edit', [
-            'users' => $users,
+            'user' => $users,
         ]);
     }
 
@@ -47,5 +47,45 @@ class AdminController extends Controller
     public function create()
     {
         return view('admin.dashboard.access.create');
+    }
+
+    public function changePassword(Request $request, AdminServices $adminServices)
+    {
+        $validate = $adminServices->validatePassword($request);
+
+        if ($validate !== true) {
+            return redirect()->back()->with('validationPassword', $validate->messages());
+        }
+
+        $checkPassword = $adminServices->checkPasswordIsSame($request);
+        
+        if ($checkPassword !== true) {
+            return redirect()->back()->with('validationPassword', [['Password cannot be the same as old password']]);
+        }
+
+        $status = $adminServices->changePassword($request);
+
+        if ($status) {
+            return redirect()->route('admin.access')->with('success', 'Berhasil mengubah password admin');
+        } else {
+            return redirect()->back()->with('validationPassword', $status);
+        }
+    }
+
+    public function update(Request $request, string $id, AdminServices $adminServices)
+    {
+        $validate = $adminServices->validateUpdate($request);
+
+        if ($validate !== true) {
+            return redirect()->back()->with('validationUpdate', $validate->messages());
+        }
+
+        $status = $adminServices->update($request, $id);
+
+        if ($status) {
+            return redirect()->route('admin.access')->with('success', 'Berhasil mengubah data admin');
+        } else {
+            return redirect()->back()->with('error', 'Gagal mengubah data admin');
+        }
     }
 }

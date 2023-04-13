@@ -72,8 +72,11 @@ Route::prefix('admin')->group(function () {
     Route::get('carousel', [CarouselController::class, 'index'])->name('admin.carousel');
 
     Route::get('access', [AdminController::class, 'index'])->name('admin.access');
+
     Route::get('access/create', [AdminController::class, 'create'])->name('admin.access.create');
     Route::post('access/store', [AdminController::class, 'store'])->name('admin.access.store');
 
     Route::get('access/{id}', [AdminController::class, 'edit'])->name('admin.access.edit');
+    Route::put('access/{id}', [AdminController::class, 'update'])->name('admin.access.update');
+    Route::post('access', [AdminController::class, 'changePassword'])->name('admin.access.change-password');
 });

@@ -33,6 +33,7 @@
                             <th scope="col">Email</th>
                             <th scope="col">Dibuat Pada</th>
                             <th scope="col">Status</th>
+                            <th scope="col">Role</th>
                             <th scope="col">Action</th>
                         </tr>
                         </thead>
@@ -49,6 +50,13 @@
                                             <span class="badge bg-success">Aktif</span>
                                         @else
                                             <span class="badge bg-danger">Tidak Aktif</span>
+                                        @endif
+                                    </td>
+                                    <td class="py-3">
+                                        @if($user->is_super == 1)
+                                            <span class="badge bg-danger">Super Admin</span>
+                                        @else
+                                            <span class="badge bg-warning">Admin</span>
                                         @endif
                                     </td>
                                     <td class="py-3">
