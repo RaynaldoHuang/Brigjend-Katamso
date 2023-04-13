@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\BrosurController as AdminBrosurController;
 use App\Http\Controllers\Admin\CarouselController;
 use App\Http\Controllers\Admin\ContactController as AdminContactController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -103,4 +104,10 @@ Route::prefix('admin')->group(function () {
     Route::put('contact/{id}', [AdminContactController::class, 'update'])->name('admin.contact.update');
 
     Route::post('contact', [AdminContactController::class, 'destroy'])->name('admin.contact.destroy');
+
+    // Brosur
+    Route::get('brosur', [AdminBrosurController::class, 'view'])->name('admin.brosur');
+
+    Route::post('brosur', [AdminBrosurController::class, 'destroy'])->name('admin.brosur.destroy');
+
 });

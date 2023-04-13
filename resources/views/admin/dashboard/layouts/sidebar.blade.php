@@ -75,7 +75,7 @@
 
         <div class="row">
             <div class="col py-3">
-                <a href="#" class="text-decoration-none text-white">
+                <a href="{{route('admin.brosur')}}" class="text-decoration-none text-white">
                     <div class="d-flex align-items-center">
                         <i class="fas fa-envelopes-bulk me-3"></i>
                         <span class="fw-semibold">Brosur</span>
