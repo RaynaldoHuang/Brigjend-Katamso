@@ -2,7 +2,7 @@
 
 {{--Admin Edit--}}
 @section('content')
-    <div class="row p-3 gy-4">
+    <div class="row p-3 gy-4 mx-0">
         <div class="col-6">
             <div class="bg-white p-4 rounded-3">
                 <div class=" border-bottom border-dark border-opacity-25">

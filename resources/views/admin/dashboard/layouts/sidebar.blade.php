@@ -1,5 +1,5 @@
 {{--Sidebar--}}
-<aside class="bg-dark text-white min-vh-100 col-2">
+<aside class="bg-dark text-white min-vh-100">
     <div class="px-4 pt-4">
         <div class="row">
             <div class="col">

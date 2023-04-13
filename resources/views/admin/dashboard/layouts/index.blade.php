@@ -11,7 +11,9 @@
 <body>
 <div class="d-grid">
     <div class="row g-0">
-        @include('admin.dashboard.layouts.sidebar')
+        <div class="col-2">
+            @include('admin.dashboard.layouts.sidebar')
+        </div>
 
         <div class="col-10 p-0">
             <div class="w-100 h-100 overflow-auto" style="background-color: #e9ecef">
