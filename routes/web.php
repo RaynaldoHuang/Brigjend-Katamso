@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminAchievementController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\BrosurController as AdminBrosurController;
@@ -116,4 +117,6 @@ Route::prefix('admin')->group(function () {
 
     Route::post('brosur', [AdminBrosurController::class, 'destroy'])->name('admin.brosur.destroy');
 
+    // Achievements
+    Route::get('achievement', [AdminAchievementController::class, 'view'])->name('admin.achievement');
 });

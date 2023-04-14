@@ -53,7 +53,7 @@
 
         <div class="row">
             <div class="col py-3">
-                <a href="#" class="text-decoration-none text-white">
+                <a href="{{route('admin.achievement')}}" class="text-decoration-none text-white">
                     <div class="d-flex align-items-center">
                         <i class="fas fa-trophy me-3"></i>
                         <span class="fw-semibold">Prestasi</span>
