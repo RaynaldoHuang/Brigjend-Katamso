@@ -21,19 +21,19 @@ class UnitsSeeder extends Seeder
             ],
             [
                 'name' => 'sd',
-                'image' => 'image/UNIT 1.png'
+                'image' => 'image/unit tk 1.png'
             ],
             [
                 'name' => 'smp',
-                'image' => 'image/UNIT 1.png'
+                'image' => 'image/unit tk 1.png'
             ],
             [
                 'name' => 'sma',
-                'image' => 'image/UNIT 1.png'
+                'image' => 'image/unit tk 1.png'
             ],
             [
                 'name' => 'smk',
-                'image' => 'image/UNIT 1.png'
+                'image' => 'image/unit tk 1.png'
             ],
         ];
 

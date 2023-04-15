@@ -12,11 +12,16 @@ class Units extends Model
     protected $table = 'units';
 
     protected $fillable = [
-        'name',
+        'image',
     ];
 
-    public function unitImage()
+    public function detail()
     {
-        return $this->hasMany(UnitDetail::class);
+        return $this->hasOne(UnitDetail::class, 'unit_id', 'id');
+    }
+
+    public function program()
+    {
+        return $this->hasMany(UnitProgram::class, 'unit_id', 'id');
     }
 }

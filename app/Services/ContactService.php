@@ -13,17 +13,18 @@ class ContactService
         DB::beginTransaction();
 
         try {
-            $checkContact = self::checkAvailable($request->name, $request->type);
+            $checkContact = self::checkAvailable($request->name);
 
             if ($checkContact) {
                 $checkContact->update([
-                    'value' => $request->value,
+                    'email' => $request->email,
+                    'phone' => $request->phone,
                 ]);
             } else {
                 Contact::create([
                     'name' => $request->name,
-                    'value' => $request->value,
-                    'type' => $request->type,
+                    'email' => $request->email,
+                    'phone' => $request->phone,
                 ]);
             }
 
@@ -36,9 +37,9 @@ class ContactService
         }
     }
 
-    public function checkAvailable($name, $type)
+    public function checkAvailable($name)
     {
-        $contact = Contact::where('name', $name)->where('type', $type)->first();
+        $contact = Contact::where('name', $name)->first();
 
         if ($contact) {
             return $contact;
@@ -54,7 +55,9 @@ class ContactService
         DB::beginTransaction();
 
         try {
-            $contact->update($request->all());
+            $contact->email = $request->email;
+            $contact->phone = $request->phone;
+            $contact->save();
 
             DB::commit();
 
@@ -68,9 +71,9 @@ class ContactService
     public function validateInput($request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
-            'value' => 'required|string|max:255',
-            'type' => 'required|string|max:255',
+            'name' => 'nullable|string|max:255',
+            'phone' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
         ]);
 
         if ($validator->fails()) {

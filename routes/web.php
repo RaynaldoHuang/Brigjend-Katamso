@@ -143,4 +143,18 @@ Route::prefix('admin')->group(function () {
 
     // Units
     Route::get('units', [AdminUnitController::class, 'view'])->name('admin.units');
+
+    Route::get('unit/{id}', [AdminUnitController::class, 'edit'])->name('admin.units.edit');
+    Route::put('unit/{id}', [AdminUnitController::class, 'update'])->name('admin.units.update');
+
+    Route::put('unit/detail/{id}', [AdminUnitController::class, 'updateDetail'])->name('admin.units.detail.update');
+
+    Route::post('unit/program/create', [AdminUnitController::class, 'createProgram'])->name('admin.units.program.create');
+    Route::post('unit/program/store', [AdminUnitController::class, 'storeProgram'])->name('admin.units.program.store');
+
+    Route::get('unit/program/{id}', [AdminUnitController::class, 'editProgram'])->name('admin.units.program.edit');
+    Route::put('unit/program/{id}', [AdminUnitController::class, 'updateProgram'])->name('admin.units.program.update');
+
+    Route::post('unit/program', [AdminUnitController::class, 'destroyProgram'])->name('admin.units.program.destroy');
+
 });

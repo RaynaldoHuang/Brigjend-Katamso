@@ -16,26 +16,14 @@ class ContactSeeder extends Seeder
     {
         Contact::create([
             'name' => 'Brigjend Katamso 1',
-            'type' => 'phone',
-            'value' => '061 - 845 1582',
+            'phone' => '061 - 845 1582',
+            'email' => 'contact@ypnbrigjendkatamso.sch.id',
         ]);
 
         Contact::create([
             'name' => 'Brigjend Katamso 2',
-            'type' => 'phone',
-            'value' => '061 - 685 4666',
-        ]);
-
-        Contact::create([
-            'name' => 'Brigjend Katamso 1',
-            'type' => 'email',
-            'value' => 'contact@ypnbrigjendkatamso.sch.id',
-        ]);
-
-        Contact::create([
-            'name' => 'Brigjend Katamso 2',
-            'type' => 'email',
-            'value' => 'contact@ypnbrigjendkatamso2.sch.id',
+            'phone' => '061 - 685 4666',
+            'email' => 'contact@ypnbrigjendkatamso2.sch.id',
         ]);
     }
 }

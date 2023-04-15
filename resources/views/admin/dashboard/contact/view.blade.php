@@ -20,7 +20,7 @@
                         @endif
 
                         <a href="{{route('admin.contact.create')}}" class="btn btn-primary {{
-                        $contacts->count() >= 4 ?
+                        $contacts->count() >= 2 ?
                         'disabled' : '' }}">
                             <i class="fas fa-plus"></i>
                             Add Contact
@@ -32,8 +32,8 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Value</th>
-                            <th scope="col">Type</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Email</th>
                             <th scope="col">Action</th>
                         </tr>
                         </thead>
@@ -42,14 +42,8 @@
                             <tr>
                                 <th scope="row" class="py-3">{{ $loop->iteration }}</th>
                                 <td class="fw-semibold">{{ $contact->name }}</td>
-                                <td>{{ $contact->value }}</td>
-                                <td>
-                                    @if($contact->type == 'phone')
-                                        <span class="badge bg-success">Phone</span>
-                                    @else
-                                        <span class="badge bg-success">Email</span>
-                                    @endif
-                                </td>
+                                <td>{{ $contact->phone }}</td>
+                                <td>{{ $contact->email }}</td>
                                 <td>
                                     <div class="d-flex gap-1">
                                         <a href="{{route('admin.contact.edit', $contact->id)}}" class="btn

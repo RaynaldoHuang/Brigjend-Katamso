@@ -11,13 +11,14 @@ class UnitDetail extends Model
     use HasFactory;
 
     protected $table = 'unit_details';
+    protected $primaryKey = 'unit_id';
 
     protected $fillable = [
         'unit_id',
+        'title',
         'alt',
-        'type',
         'image',
-        'is_main',
+        'description',
         'is_published',
     ];
 
