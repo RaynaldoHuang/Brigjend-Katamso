@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Admin\AdminAchievementController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminNewsController;
+use App\Http\Controllers\Admin\AdminUnitController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\BrosurController as AdminBrosurController;
 use App\Http\Controllers\Admin\CarouselController;
@@ -127,4 +129,18 @@ Route::prefix('admin')->group(function () {
     Route::put('achievement/{id}', [AdminAchievementController::class, 'update'])->name('admin.achievement.update');
 
     Route::post('achievement', [AdminAchievementController::class, 'destroy'])->name('admin.achievement.destroy');
+
+    // Berita & Kegiatan
+    Route::get('news', [AdminNewsController::class, 'view'])->name('admin.news');
+
+    Route::get('news/create', [AdminNewsController::class, 'create'])->name('admin.news.create');
+    Route::post('news/store', [AdminNewsController::class, 'store'])->name('admin.news.store');
+
+    Route::get('news/{id}', [AdminNewsController::class, 'edit'])->name('admin.news.edit');
+    Route::put('news/{id}', [AdminNewsController::class, 'update'])->name('admin.news.update');
+
+    Route::post('news', [AdminNewsController::class, 'destroy'])->name('admin.news.destroy');
+
+    // Units
+    Route::get('units', [AdminUnitController::class, 'view'])->name('admin.units');
 });

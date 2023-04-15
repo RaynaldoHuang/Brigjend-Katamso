@@ -13,9 +13,8 @@ class UnitController extends Controller
     {
         $contact = Contact::all();
 
-        $unitImageMain = UnitImage::published()->main(true)->type('tkdanpg')->get();
-        $unitImageTk = UnitImage::published()->main(false)->type('tk')->get();
-        $unitImagePg = UnitImage::published()->main(false)->type('pg')->get();
+        $unitImageMain = UnitImage::published()->type('pgdantk')->get();
+        $unitImagePg = UnitImage::published()->type('pgdantk')->get();
         $unitExtra = UnitExtra::active()->where('unit_id', 1)->get();
 
         view()->share('contacts', $contact);

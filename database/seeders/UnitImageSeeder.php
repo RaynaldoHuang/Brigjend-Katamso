@@ -17,104 +17,71 @@ class UnitImageSeeder extends Seeder
         // TK dan PG
         UnitImage::create([
             'unit_id' => 1,
-            'alt' => 'TK dan PG',
-            'type' => 'tkdanpg',
-            'image' => 'image/unit tk 1.png',
-            'is_main' => true,
-            'is_published' => true,
-        ]);
-
-        UnitImage::create([
-            'unit_id' => 1,
-            'alt' => 'TK dan PG',
-            'type' => 'tk',
-            'image' => 'image/img3.png',
-            'is_main' => false,
-            'is_published' => true,
-        ]);
-
-        UnitImage::create([
-            'unit_id' => 1,
-            'alt' => 'TK dan PG',
+            'title' => 'PG dan TK Brigjend Katamso',
+            'description' => 'Mendidik anak dengan kasih sayang kepada peserta didik agar mereka memiliki kepercayaan diri, dengan dasar disiplin serta prilaku yang baik, hormat kepada orang tua dan guru serta bertaqwa kepada Tuhan Y.M.E. Membantu anak agar dapat mandiri dan bersosialisasi dengan baik. Memberikan pengetahuan dasar tentang membaca, menulis, berhitung, menggambar, bernyanyi dan belajar sambil bermain.',
             'type' => 'pg',
-            'image' => 'image/img3.png',
-            'is_main' => false,
+            'alt' => 'PG',
+            'main_image' => 'image/unit tk 1.png',
+            'image' => 'image/unit tk 1.png',
+            'is_published' => true,
+        ]);
+
+        UnitImage::create([
+            'unit_id' => 1,
+            'title' => 'PG dan TK Brigjend Katamso',
+            'description' => 'Mendidik anak dengan kasih sayang kepada peserta didik agar mereka memiliki kepercayaan diri, dengan dasar disiplin serta prilaku yang baik, hormat kepada orang tua dan guru serta bertaqwa kepada Tuhan Y.M.E. Membantu anak agar dapat mandiri dan bersosialisasi dengan baik. Memberikan pengetahuan dasar tentang membaca, menulis, berhitung, menggambar, bernyanyi dan belajar sambil bermain.',
+            'type' => 'tk',
+            'alt' => 'TK',
+            'main_image' => 'image/unit tk 1.png',
+            'image' => 'image/unit tk 1.png',
             'is_published' => true,
         ]);
 
         // SD
         UnitImage::create([
             'unit_id' => 2,
+            'title' => 'SD Brigjend Katamso',
+            'description' => 'Mendidik anak dengan kasih sayang kepada peserta didik agar mereka memiliki kepercayaan diri, dengan dasar disiplin serta prilaku yang baik, hormat kepada orang tua dan guru serta bertaqwa kepada Tuhan Y.M.E. Membantu anak agar dapat mandiri dan bersosialisasi dengan baik. Memberikan pengetahuan dasar tentang membaca, menulis, berhitung, menggambar, bernyanyi dan belajar sambil bermain.',
+            'type' => 'smp',
             'alt' => 'Sekolah Dasar',
-            'type' => 'sd',
+            'main_image' => 'image/unit tk 1.png',
             'image' => 'image/unit tk 1.png',
-            'is_main' => true,
-            'is_published' => true,
-        ]);
-
-        UnitImage::create([
-            'unit_id' => 2,
-            'alt' => 'Sekolah Dasar',
-            'type' => 'sd',
-            'image' => 'image/img3.png',
-            'is_main' => false,
             'is_published' => true,
         ]);
 
         // SMP
         UnitImage::create([
             'unit_id' => 3,
-            'alt' => 'Sekolah Menengah Pertama',
+            'title' => 'SMP Brigjend Katamso',
+            'description' => 'Mendidik anak dengan kasih sayang kepada peserta didik agar mereka memiliki kepercayaan diri, dengan dasar disiplin serta prilaku yang baik, hormat kepada orang tua dan guru serta bertaqwa kepada Tuhan Y.M.E. Membantu anak agar dapat mandiri dan bersosialisasi dengan baik. Memberikan pengetahuan dasar tentang membaca, menulis, berhitung, menggambar, bernyanyi dan belajar sambil bermain.',
             'type' => 'smp',
+            'alt' => 'Sekolah Menengah Pertama',
+            'main_image' => 'image/unit tk 1.png',
             'image' => 'image/unit tk 1.png',
-            'is_main' => true,
-            'is_published' => true,
-        ]);
-
-        UnitImage::create([
-            'unit_id' => 3,
-            'alt' => 'Sekolah Menengah Pertama',
-            'type' => 'smp',
-            'image' => 'image/img3.png',
-            'is_main' => false,
             'is_published' => true,
         ]);
 
         // SMA
         UnitImage::create([
             'unit_id' => 4,
-            'alt' => 'Sekolah Menengah Atas',
+            'title' => 'SMA Brigjend Katamso',
+            'description' => 'Mendidik anak dengan kasih sayang kepada peserta didik agar mereka memiliki kepercayaan diri, dengan dasar disiplin serta prilaku yang baik, hormat kepada orang tua dan guru serta bertaqwa kepada Tuhan Y.M.E. Membantu anak agar dapat mandiri dan bersosialisasi dengan baik. Memberikan pengetahuan dasar tentang membaca, menulis, berhitung, menggambar, bernyanyi dan belajar sambil bermain.',
             'type' => 'sma',
+            'alt' => 'Sekolah Menengah Atas',
+            'main_image' => 'image/unit tk 1.png',
             'image' => 'image/unit tk 1.png',
-            'is_main' => true,
-            'is_published' => true,
-        ]);
-
-        UnitImage::create([
-            'unit_id' => 4,
-            'alt' => 'Sekolah Menengah Atas',
-            'type' => 'sma',
-            'image' => 'image/img3.png',
-            'is_main' => false,
             'is_published' => true,
         ]);
 
         // SMK
         UnitImage::create([
             'unit_id' => 5,
-            'alt' => 'Sekolah Menengah Kejuruan',
+            'title' => 'SMK Brigjend Katamso',
+            'description' => 'Mendidik anak dengan kasih sayang kepada peserta didik agar mereka memiliki kepercayaan diri, dengan dasar disiplin serta prilaku yang baik, hormat kepada orang tua dan guru serta bertaqwa kepada Tuhan Y.M.E. Membantu anak agar dapat mandiri dan bersosialisasi dengan baik. Memberikan pengetahuan dasar tentang membaca, menulis, berhitung, menggambar, bernyanyi dan belajar sambil bermain.',
             'type' => 'smk',
-            'image' => 'image/unit tk 1.png',
-            'is_main' => true,
-            'is_published' => true,
-        ]);
-
-        UnitImage::create([
-            'unit_id' => 5,
             'alt' => 'Sekolah Menengah Kejuruan',
-            'type' => 'smk',
+            'main_image' => 'image/unit tk 1.png',
             'image' => 'image/img3.png',
-            'is_main' => false,
             'is_published' => true,
         ]);
     }

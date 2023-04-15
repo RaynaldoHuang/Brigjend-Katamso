@@ -31,11 +31,6 @@ class UnitImage extends Model
         return $query->where('is_published', true);
     }
 
-    public function scopeMain($query, $isMain = false)
-    {
-        return $query->where('is_main', $isMain);
-    }
-
     public function scopeType($query, $type)
     {
         return $query->where('type', $type);
