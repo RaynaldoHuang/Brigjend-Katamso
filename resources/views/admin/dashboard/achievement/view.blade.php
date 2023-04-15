@@ -19,7 +19,7 @@
                             </div>
                         @endif
 
-                        <a href="#" class="btn btn-primary">
+                        <a href="{{route('admin.achievement.create')}}" class="btn btn-primary">
                             <i class="fas fa-plus"></i>
                             Add Achievement
                         </a>
@@ -67,10 +67,13 @@
                                 </td>
                                 <td>
                                     <div class="d-flex gap-1">
-                                        <a href="#" class="btn btn-link me-1">
+                                        <a href="{{route('admin.achievement.edit', $item->id)}}"
+                                           class="btn
+                                        btn-link
+                                        me-1">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <form action="#" method="post">
+                                        <form action="{{route('admin.achievement.destroy')}}" method="post">
                                             @csrf
                                             <input type="hidden" name="id" value="{{ $item->id }}">
                                             <button type="submit" class="btn btn-link text-danger">

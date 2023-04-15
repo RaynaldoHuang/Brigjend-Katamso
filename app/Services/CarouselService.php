@@ -63,19 +63,23 @@ class CarouselService
                 if (file_exists($oldFile)) {
                     unlink($oldFile);
                 }
+
+                $path = $this->uploadFile($request->image);
+
+                if (!$path) {
+                    DB::rollBack();
+                    return false;
+                }
+
+                $carouselImage->update([
+                    'name' => $request->name,
+                    'image' => $path,
+                ]);
+            } else {
+                $carouselImage->update([
+                    'name' => $request->name,
+                ]);
             }
-
-            $path = $this->uploadFile($request->image);
-
-            if (!$path) {
-                DB::rollBack();
-                return false;
-            }
-
-            $carouselImage->update([
-                'name' => $request->name,
-                'image' => $path,
-            ]);
 
             DB::commit();
 

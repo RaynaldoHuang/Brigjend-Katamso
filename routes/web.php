@@ -119,4 +119,12 @@ Route::prefix('admin')->group(function () {
 
     // Achievements
     Route::get('achievement', [AdminAchievementController::class, 'view'])->name('admin.achievement');
+
+    Route::get('achievement/create', [AdminAchievementController::class, 'create'])->name('admin.achievement.create');
+    Route::post('achievement/store', [AdminAchievementController::class, 'store'])->name('admin.achievement.store');
+
+    Route::get('achievement/{id}', [AdminAchievementController::class, 'edit'])->name('admin.achievement.edit');
+    Route::put('achievement/{id}', [AdminAchievementController::class, 'update'])->name('admin.achievement.update');
+
+    Route::post('achievement', [AdminAchievementController::class, 'destroy'])->name('admin.achievement.destroy');
 });
