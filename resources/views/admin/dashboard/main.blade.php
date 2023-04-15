@@ -31,4 +31,12 @@
             </div>
         </div>
     </div>
+
+    <div class="row p-3">
+        <div class="col">
+            <div class="bg-white p-3 rounded-2">
+                <p class="text-muted fw-semibold m-0">Welcome to dashboard!</p>
+            </div>
+        </div>
+    </div>
 @endsection

@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\UnitImage;
+use App\Models\UnitDetail;
 
 class AdminUnitController extends Controller
 {
     public function view()
     {
-        $units = UnitImage::paginate(5);
+        $units = UnitDetail::paginate(5);
 
         return view('admin.dashboard.unit.view', [
             'units' => $units

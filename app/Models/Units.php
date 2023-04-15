@@ -17,6 +17,6 @@ class Units extends Model
 
     public function unitImage()
     {
-        return $this->hasMany(UnitImage::class);
+        return $this->hasMany(UnitDetail::class);
     }
 }

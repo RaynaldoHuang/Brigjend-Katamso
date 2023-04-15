@@ -22,9 +22,10 @@ class DatabaseSeeder extends Seeder
             ContactSeeder::class,
             AchievementSeeder::class,
             UnitsSeeder::class,
-            UnitImageSeeder::class,
+            UnitDetailSeeder::class,
             UnitExtraSeeder::class,
             UnitBrosurSeeder::class,
+            UnitProgramSeeder::class,
         ]);
     }
 }

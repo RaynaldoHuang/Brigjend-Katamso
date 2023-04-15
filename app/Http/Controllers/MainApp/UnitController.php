@@ -4,8 +4,10 @@ namespace App\Http\Controllers\MainApp;
 
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
+use App\Models\UnitDetail;
 use App\Models\UnitExtra;
-use App\Models\UnitImage;
+use App\Models\UnitProgram;
+use App\Models\Units;
 
 class UnitController extends Controller
 {
@@ -13,17 +15,18 @@ class UnitController extends Controller
     {
         $contact = Contact::all();
 
-        $unitImageMain = UnitImage::published()->type('pgdantk')->get();
-        $unitImagePg = UnitImage::published()->type('pgdantk')->get();
+        $unit = Units::where('id', 1)->first();
+        $unitDetail = UnitDetail::published()->where('unit_id', 1)->first();
+        $unitProgram = UnitProgram::published()->where('unit_id', 1)->get();
         $unitExtra = UnitExtra::active()->where('unit_id', 1)->get();
 
         view()->share('contacts', $contact);
 
         return view('Unit.unittk', [
-            'imageMains' => $unitImageMain,
-            'imageTk' => $unitImageTk,
-            'imagePg' => $unitImagePg,
-            'extrakulikuler' => $unitExtra,
+            'unit' => $unit,
+            'unitDetail' => $unitDetail,
+            'unitProgram' => $unitProgram,
+            'unitExtra' => $unitExtra,
         ]);
     }
 
