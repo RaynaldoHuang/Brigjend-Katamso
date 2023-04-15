@@ -5,12 +5,15 @@
             <i class="fas fa-bars"></i>
         </button>
 
-        <h6 class="m-0">Rendy Suprato Wijaya</h6>
+        <h6 class="m-0">{{auth()->user()->name ?? ''}}</h6>
     </div>
 
     <div class="ms-md-auto">
-        <button class="btn btn-outline-danger">
-            Logout
-        </button>
+        <form action="{{route('admin.logout')}}" method="POST">
+            @csrf
+            <button type="submit" class="btn btn-outline-danger">
+                Logout
+            </button>
+        </form>
     </div>
 </nav>

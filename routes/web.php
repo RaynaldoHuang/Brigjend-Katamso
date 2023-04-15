@@ -69,9 +69,18 @@ Route::get('/Kontak', [ContactController::class, 'index'])->name('kontakbk');
 
 // Admin Routes
 Route::prefix('admin')->group(function () {
-    Route::get('login', [AuthController::class, 'login'])->name('admin.login');
-    Route::get('forgot-password', [AuthController::class, 'forgotPassword'])->name('admin.forgot-password');
-    Route::get('reset-password', [AuthController::class, 'resetPassword'])->name('admin.reset-password');
+    Route::get('login', [AuthController::class, 'loginView'])->name('admin.login.view');
+    Route::post('login', [AuthController::class, 'login'])->name('admin.login');
+
+    Route::get('forgot-password', [AuthController::class, 'forgotPasswordView'])->name('admin.forgot-password.view');
+    Route::post('password/reset', [AuthController::class, 'forgotPassword'])->name('password.email');
+
+    Route::get('reset-password/{token}', [AuthController::class, 'resetPasswordView'])->name('password.reset');
+    Route::post('reset-password', [AuthController::class, 'resetPassword'])->name('password.update');
+});
+
+Route::middleware('auth')->prefix('admin')->group(function () {
+    Route::post('logout', [AuthController::class, 'logout'])->name('admin.logout');
 
     // Dashboard Main
     Route::get('dashboard', [DashboardController::class, 'main'])->name('admin.dashboard');
