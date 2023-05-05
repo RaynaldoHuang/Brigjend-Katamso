@@ -24,4 +24,9 @@ class Units extends Model
     {
         return $this->hasMany(UnitProgram::class, 'unit_id', 'id');
     }
+
+    public function extra()
+    {
+        return $this->hasMany(UnitExtra::class, 'unit_id', 'id');
+    }
 }

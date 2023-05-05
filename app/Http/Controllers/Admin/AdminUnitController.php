@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\UnitExtra;
 use App\Models\UnitProgram;
 use App\Models\Units;
 use App\Services\UnitDetailService;
+use App\Services\UnitExtraService;
 use App\Services\UnitProgramService;
 use App\Services\UnitService;
 use Illuminate\Http\Request;
@@ -120,6 +122,67 @@ class AdminUnitController extends Controller
 
         if ($status) {
             return redirect()->route('admin.units')->with('success', 'Program created successfully');
+        } else {
+            return redirect()->back()->with('error', 'Gagal membuat Program');
+        }
+    }
+
+    public function createExtra(Request $request)
+    {
+        $unitId = $request->unitId;
+
+        return view('admin.dashboard.unit.extra.create', [
+            'unitId' => $unitId
+        ]);
+    }
+
+    public function destroyExtra(Request $request)
+    {
+        $unitExtra = UnitExtra::findOrFail($request->id);
+
+        $unitExtra->delete();
+
+        return redirect()->back()->with('success', 'Extrakulikuler deleted successfully');
+    }
+
+    public function editExtra(string $id)
+    {
+        $extras = UnitExtra::findOrFail($id);
+
+        return view('admin.dashboard.unit.extra.edit', [
+            'extras' => $extras
+        ]);
+    }
+
+    public function updateExtra(Request $request, string $id, UnitExtraService $extraService)
+    {
+        $validate = $extraService->validateInput($request);
+
+        if ($validate !== true) {
+            return redirect()->back()->with('validation', $validate->messages());
+        }
+
+        $status = $extraService->update($request, $id);
+
+        if ($status) {
+            return redirect()->route('admin.units')->with('success', 'Extrakulikuler updated successfully');
+        } else {
+            return redirect()->back()->with('error', 'Gagal membuat Unit');
+        }
+    }
+
+    public function storeExtra(Request $request, UnitExtraService $extraService)
+    {
+        $validate = $extraService->validateInput($request);
+
+        if ($validate !== true) {
+            return redirect()->back()->with('validation', $validate->messages());
+        }
+
+        $status = $extraService->create($request);
+
+        if ($status) {
+            return redirect()->route('admin.units')->with('success', 'Extrakulikuler created successfully');
         } else {
             return redirect()->back()->with('error', 'Gagal membuat Program');
         }

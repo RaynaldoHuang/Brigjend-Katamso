@@ -166,6 +166,13 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 
     Route::post('unit/program', [AdminUnitController::class, 'destroyProgram'])->name('admin.units.program.destroy');
 
-});
+    // Unit Extra
+    Route::post('unit/extra/create', [AdminUnitController::class, 'createExtra'])->name('admin.units.extra.create');
+    Route::post('unit/extra/store', [AdminUnitController::class, 'storeExtra'])->name('admin.units.extra.store');
 
-// Test
+    Route::get('unit/extra/{id}', [AdminUnitController::class, 'editExtra'])->name('admin.units.extra.edit');
+    Route::put('unit/extra/{id}', [AdminUnitController::class, 'updateExtra'])->name('admin.units.extra.update');
+
+    Route::post('unit/extra', [AdminUnitController::class, 'destroyExtra'])->name('admin.units.extra.destroy');
+
+});
