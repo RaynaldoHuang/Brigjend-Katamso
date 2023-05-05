@@ -3,7 +3,7 @@
 @section('content')
     {{-- gambar1 --}}
     <div class="text-center mt-4 img-fluid">
-        <img src="{{ asset('image/unit tk 1.png') }}" alt="" class="container">
+        <img src="{{ asset($unit->image) }}" alt="{{$unit->name}}" class="container">
     </div>
 
     {{-- title2 --}}
@@ -13,14 +13,11 @@
     <div class="container mt-4">
         <div class="row">
             <div class="col-md-6 d-flex justify-content-center align-items-center fs-5">
-                <p>Mendidik anak dengan kasih sayang kepada peserta didik agar mereka memiliki kepercayaan diri, dengan
-                    dasar disiplin serta prilaku yang baik, hormat kepada orang tua dan guru serta bertaqwa kepada Tuhan
-                    Y.M.E. Membantu anak agar dapat mandiri dan bersosialisasi dengan baik. Memberikan pengetahuan dasar
-                    tentang membaca, menulis, berhitung, menggambar, bernyanyi dan belajar sambil bermain.
-                </p>
+                <p>{{$unitDetail->description}}</p>
             </div>
             <div class="col-md-6 mt-3 d-flex justify-content-center align-items-center">
-                <img src="{{ asset('image/img3.png') }}" alt="" class="img-fluid" style="max-width:500px">
+                <img src="{{ asset($unitDetail->image) }}" alt="{{$unitDetail->alt}}" class="img-fluid"
+                     style="max-width:500px">
             </div>
         </div>
     </div>
@@ -30,17 +27,15 @@
     </div>
     <div class="container mt-4">
         <div class="row">
-            <div class="col-md-6 mt-3 d-flex justify-content-center align-items-center">
-                <img src="{{ asset('image/img3.png') }}" alt="" class="img-fluid" style="max-width:500px">
-            </div>
-            <div class="col-md-6 d-flex justify-content-center align-items-center fs-5">
-                <p>Prinsip belajar dalam TK adalah "Bermain sambil Belajar dan Belajar sambil Bermain", maka potensi peserta
-                    didik dapat di kembangkan sebelum memasuki masa Sekolah Dasar. Melalui pendekatan bermain, anak-anak
-                    dikenalkan dengan berbagai pengetahuan seperti : Bahasa Inggris, Bahasa Mandarin, Seni Musik dan juga
-                    pengetahuan dasar. Selain itu anak-anak dapat mengembangkan aspek psikis, fisik, nilai kehidupan,
-                    sosial, emosional, kognetif, bahasa, kemandirian, seni dan budaya.
-                </p>
-            </div>
+            @foreach($unitProgram as $item)
+                <div class="col-md-6 mt-3 d-flex justify-content-center align-items-center">
+                    <img src="{{ asset($item->image) }}" alt="{{$item->alt}}" class="img-fluid"
+                         style="max-width:500px">
+                </div>
+                <div class="col-md-6 d-flex justify-content-center align-items-center fs-5">
+                    <p>{{$item->description}}</p>
+                </div>
+            @endforeach
         </div>
     </div>
     {{-- title4 --}}
@@ -50,47 +45,16 @@
 
     {{-- gambar2 --}}
     <div class="container w-100 mt-4 mb-5">
-        <div class="row">
-            <div class="text-center col-md-4">
-                <img src="{{ asset('image/image3.png') }}" alt="" style="max-width: 400px">
-                <div class="font-cairo text-default fw-bold fs-3 text-center mt-1">
-                    Menari
+        <div class="row d-flex justify-content-center align-items-center gap-5">
+            @foreach($unitExtra as $item)
+                <div class="col-md-4 d-flex justify-content-center align-items-center flex-column">
+                    <img src="{{ asset($item->image) }}" alt="{{$item->alt}}"
+                         style="max-width: 400px">
+                    <div class="font-cairo text-default fw-bold fs-3 text-center mt-1">
+                        {{ $item->name }}
+                    </div>
                 </div>
-            </div>
-            <div class="text-center col-md-4">
-                <img src="{{ asset('image/image3.png') }}" alt="" style="max-width: 400px">
-                <div class="font-cairo text-default fw-bold fs-3 text-center mt-1">
-                    Angklung
-                </div>
-            </div>
-            <div class="text-center col-md-4">
-                <img src="{{ asset('image/image3.png') }}" alt="" style="max-width: 400px">
-                <div class="font-cairo text-default fw-bold fs-3 text-center mt-1">
-                    Mewarnai & Menggambar
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container w-100 mt-4 mb-5">
-        <div class="row">
-            <div class="text-center col-md-4">
-                <img src="{{ asset('image/image3.png') }}" alt="" style="max-width: 400px">
-                <div class="font-cairo text-default fw-bold fs-3 text-center mt-1">
-                    Senam
-                </div>
-            </div>
-            <div class="text-center col-md-4">
-                <img src="{{ asset('image/image3.png') }}" alt="" style="max-width: 400px">
-                <div class="font-cairo text-default fw-bold fs-3 text-center mt-1">
-                    Bernyanyi
-                </div>
-            </div>
-            <div class="text-center col-md-4">
-                <img src="{{ asset('image/image3.png') }}" alt="" style="max-width: 400px">
-                <div class="font-cairo text-default fw-bold fs-3 text-center mt-1">
-                    Story Telling
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 @endsection

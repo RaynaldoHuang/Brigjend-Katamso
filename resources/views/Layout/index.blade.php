@@ -93,22 +93,22 @@
 </head>
 
 <body>
-    @include('Layout.topbar')
+@include('Layout.topbar')
 
-    @include('Layout.navbar')
+@include('Layout.navbar')
 
-    {{-- <div class="container"> --}}
-    @yield('content')
-    {{-- </div> --}}
+{{-- <div class="container"> --}}
+@yield('content')
+{{-- </div> --}}
 
-    @include('Layout.footer')
-    {{-- script --}}
-    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js"
+@include('Layout.footer')
+{{-- script --}}
+<script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js"
         integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    @yield('custom.js')
+@yield('custom.js')
 </body>
 
 </html>

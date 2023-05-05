@@ -15,22 +15,29 @@
                     Yayasan Perguruan Nasional Brigjend Katamso 1
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="font-cairo text-default fw-bold fs-4 mt-3">
-                            Telepon
-                        </div>
-                        <div class="fw-medium mt-1">
-                            061 - 845 1582
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="font-cairo text-default fw-bold fs-4 mt-3">
-                            E-mail
-                        </div>
-                        <div class="fw-medium mt-1">
-                            <a href="">contact@ypnbrigjendkatamso.sch.id</a>
-                        </div>
-                    </div>
+                    @foreach($contacts as $contact)
+                        @if($contact->name === 'Brigjend Katamso 1')
+                            <div class="col-md-6">
+                                <div class="font-cairo text-default fw-bold fs-4 mt-3">
+                                    Telepon
+                                </div>
+                                <div class="fw-medium mt-1">
+                                    {{$contact->phone }}
+                                </div>
+                            </div>
+                        @endif
+
+                        @if($contact->name === 'Brigjend Katamso 1')
+                            <div class="col-md-6">
+                                <div class="font-cairo text-default fw-bold fs-4 mt-3">
+                                    E-mail
+                                </div>
+                                <div class="fw-medium mt-1">
+                                    <a href="">{{$contact->email}}</a>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
                 </div>
             </div>
             <div class="col-md-6">
@@ -45,22 +52,29 @@
                     Yayasan Perguruan Nasional Brigjend Katamso 2
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="font-cairo text-default fw-bold fs-4 mt-3">
-                            Telepon
-                        </div>
-                        <div class="fw-medium mt-1">
-                            061 - 685 4666
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="font-cairo text-default fw-bold fs-4 mt-3">
-                            E-mail
-                        </div>
-                        <div class="fw-medium mt-1">
-                            <a href="">contact@ypnbrigjendkatamso.sch.id</a>
-                        </div>
-                    </div>
+                    @foreach($contacts as $contact)
+                        @if($contact->name === 'Brigjend Katamso 2')
+                            <div class="col-md-6">
+                                <div class="font-cairo text-default fw-bold fs-4 mt-3">
+                                    Telepon
+                                </div>
+                                <div class="fw-medium mt-1">
+                                    {{$contact->phone }}
+                                </div>
+                            </div>
+                        @endif
+
+                        @if($contact->name === 'Brigjend Katamso 2')
+                            <div class="col-md-6">
+                                <div class="font-cairo text-default fw-bold fs-4 mt-3">
+                                    E-mail
+                                </div>
+                                <div class="fw-medium mt-1">
+                                    <a href="">{{$contact->email}}</a>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
                 </div>
             </div>
             <div class="font-cairo text-default fw-bold fs-2 text-center mt-5">
@@ -69,21 +83,21 @@
             <div class="row mt-4 m-0">
                 <div class="col-md-4 text-center">
                     <a href=""><img src="{{ asset('image/instagram.png') }}" alt="..."
-                            style="max-width: 80px"></a>
+                                    style="max-width: 80px"></a>
                     <div class="font-cairo text-default fw-bold fs-3">
                         katamso.sch.id
                     </div>
                 </div>
                 <div class="col-md-4 text-center">
                     <a href=""><img src="{{ asset('image/youtube.png') }}" alt="..."
-                            style="max-width: 80px"></a>
+                                    style="max-width: 80px"></a>
                     <div class="font-cairo text-default fw-bold fs-3">
                         Sekolah Brigjend Katamso
                     </div>
                 </div>
                 <div class="col-md-4 text-center">
                     <a href=""><img src="{{ asset('image/facebook.png') }}" alt="..."
-                            style="max-width: 80px"></a>
+                                    style="max-width: 80px"></a>
                     <div class="font-cairo text-default fw-bold fs-3">
                         brigjendkatamso.sch
                     </div>

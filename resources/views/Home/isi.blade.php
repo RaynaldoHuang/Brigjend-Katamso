@@ -2,7 +2,7 @@
 
 @section('custom.css')
     <style>
-        #carouselberita .carousel-inner .carousel-item>div {
+        #carouselberita .carousel-inner .carousel-item > div {
             position: relative;
         }
 
@@ -11,11 +11,11 @@
         }
 
         @media (max-width: 767px) {
-            #carouselberita .carousel-inner .carousel-item>div {
+            #carouselberita .carousel-inner .carousel-item > div {
                 display: none;
             }
 
-            #carouselberita .carousel-inner .carousel-item>div:first-child {
+            #carouselberita .carousel-inner .carousel-item > div:first-child {
                 display: block;
             }
         }
@@ -67,46 +67,44 @@
 
 @section('content')
     {{-- carousel --}}
+
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
         <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                aria-label="Slide 3"></button>
+            @for($i = 0; $i < count($carouselImages); $i++)
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={{ $i }}
+                    class="{{ $i == 0 ? 'active' : '' }}" aria-current="true"
+                        aria-label={{ $carouselImages[$i]->name }}></button>
+            @endfor
         </div>
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="{{ asset('image/Artboard 1.png') }}" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="{{ asset('image/Artboard 2.png') }}" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="{{ asset('image/Artboard 3.png') }}" class="d-block w-100" alt="...">
-            </div>
+            @foreach ($carouselImages as $item)
+                <div class="carousel-item active">
+                    <img src="{{ asset($item->image) }}" class="d-block w-100" alt={{ $item->name }}>
+                </div>
+            @endforeach
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="prev" style="width: 5%">
+                data-bs-slide="prev" style="width: 5%">
             <i class="fa-solid fa-circle-chevron-left fa-2x"></i>
             <span class="visually-hidden">Previous</span>
         </button>
         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="next" style="width: 5%"">
+                data-bs-slide="next" style="width: 5%">
             <i class="fa-solid fa-circle-chevron-right fa-2x"></i>
             <span class="visually-hidden">Next</span>
         </button>
     </div>
 
     {{-- welcome-text --}}
-    <div class="text1 d-flex justify-content-center align-items-center" style="background-color:#060585;height:60px">
+    <div class="text1 d-flex justify-content-center align-items-center"
+         style="background-color:#060585;height:60px">
         <h4 class="text-white m-0">Selamat Datang di Yayasan Nasional Brigjend Katamso</h4>
     </div>
 
     {{-- why-text --}}
     <div class="text2 mt-5 mb-4">
-        <h1 class="d-flex justify-content-center fs-1 fw-bold font-cairo text-default">Kenapa Brigjend Katamso ?</h1>
+        <h1 class="d-flex justify-content-center fs-1 fw-bold font-cairo text-default">Kenapa Brigjend Katamso
+            ?</h1>
         <h5 class="d-flex justify-content-center fs-6 fw-normal text-default">Kenapa kamu harus sekolah
             Brigjend Katamso?</h5>
     </div>
@@ -125,7 +123,8 @@
                         </li>
                     </ul>
                     <div class="text-white mt-3">
-                        Berhasil mencetak siswa - siswi yang cerdas dan berprestasi di bidang akademik maupun non
+                        Berhasil mencetak siswa - siswi yang cerdas dan berprestasi di bidang akademik maupun
+                        non
                         akademik.
                     </div>
                 </div>
@@ -141,7 +140,8 @@
                         </li>
                     </ul>
                     <div class="text-white mt-3">
-                        Dibimbing oleh guru yang berpengalaman dan berprestasi di bidangnya serta dapat memberikan
+                        Dibimbing oleh guru yang berpengalaman dan berprestasi di bidangnya serta dapat
+                        memberikan
                         pendidikan yang bermutu.
                     </div>
                 </div>
@@ -157,7 +157,8 @@
                         </li>
                     </ul>
                     <div class="text-white mt-3">
-                        Banyak ekstrakurikuler yang disediakan untuk melatih minat siswa dalam bidang yang disukainya.
+                        Banyak ekstrakurikuler yang disediakan untuk melatih minat siswa dalam bidang yang
+                        disukainya.
                     </div>
                 </div>
             </div>
@@ -173,7 +174,8 @@
                         </li>
                     </ul>
                     <div class="text-white mt-3">
-                        Adanya pembelajaran pendidikan nilai - nilai kemanusiaan (PNK) dalam lingkungan sekitar.
+                        Adanya pembelajaran pendidikan nilai - nilai kemanusiaan (PNK) dalam lingkungan
+                        sekitar.
                     </div>
                 </div>
             </div>
@@ -267,13 +269,16 @@
     <div class="container w-100 mt-4 unit-custom mb-4">
         <div class="row text-center d-flex justify-content-evenly">
             <div class="col-md-2 px-auto mb-4">
-                <img src="{{ asset('image/unit tk.png') }}" alt="" class="img-fluid" style="max-height: 300px">
+                <img src="{{ asset('image/unit tk.png') }}" alt="" class="img-fluid"
+                     style="max-height: 300px">
             </div>
             <div class="col-md-2 px-auto mb-4">
-                <img src="{{ asset('image/unit tk.png') }}" alt="" class="img-fluid" style="max-height: 300px">
+                <img src="{{ asset('image/unit tk.png') }}" alt="" class="img-fluid"
+                     style="max-height: 300px">
             </div>
             <div class="col-md-2 px-auto mb-4">
-                <img src="{{ asset('image/unit sd.png') }}" alt="" class="img-fluid" style="max-height: 300px">
+                <img src="{{ asset('image/unit sd.png') }}" alt="" class="img-fluid"
+                     style="max-height: 300px">
             </div>
             <div class="col-md-2 px-auto mb-4">
                 <img src="{{ asset('image/UNIT 1.png') }}" alt="" class="img-fluid" style="max-height: 300px">
@@ -298,67 +303,31 @@
             </div>
             <div class="col-6 text-end">
                 <a class="btn" href="#carouselExampleControls" role="button" data-bs-slide="prev"
-                    style="background-color: #efa343">
+                   style="background-color: #efa343">
                     <i class="fa fa-arrow-left"></i>
                 </a>
                 <a class="btn" href="#carouselExampleControls" role="button" data-bs-slide="next"
-                    style="background-color: #efa343">
+                   style="background-color: #efa343">
                     <i class="fa fa-arrow-right"></i>
                 </a>
             </div>
         </div>
         <div id="carouselExampleControls" class="carousel slide carouselberita" data-bs-ride="carousel">
-            <div class="carousel-inner role="listbox"">
-                <div class="carousel-item carouseljs active">
-                    <div class="card m-2 text-start" style="width: 30rem;">
-                        <img src="{{ asset('image/nw122.jpg') }}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title text-default">Siswa Brigjend Katamso peraih prestasi peserta teraktif
-                                dalam seminar
-                                suskes dalam membangun usaha</h5>
-                            <p class="card-text fs-6">Terima-kasih kepada Bp. Darmawan A P Dasuha, S.Sos., MM. (HR & GA
-                                Manager,
-                                PT Prodia Widyahusada, Tbk. - Wilayah Sumatera), narasumber yang mengisi ac...
-                            </p>
-                            <a href="#" class="btn button-color text-white fs-6">Selengkapnya...</a>
+            <div class="carousel-inner" role='listbox'>
+                @foreach($newsActivities as $item )
+                    <div class="carousel-item carouseljs active">
+                        <div class="card m-2 text-start" style="width: 30rem;">
+                            <img src="{{ asset($item->image) }}" class="card-img-top" alt="{{$item->title}}">
+                            <div class="card-body">
+                                <h5 class="card-title text-default">{{\Illuminate\Support\Str::limit
+                                ($item->title, 50, $end='...')}}</h5>
+                                <p class="card-text fs-6">{{\Illuminate\Support\Str::limit($item->content, 100, $end='...')}}</p>
+                                <a href="{{$item->slug}}" class="btn button-color text-white fs-6">Selengkapnya..
+                                    .</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="carousel-item carouseljs">
-                    <div class="card m-2" style="width: 30rem;">
-                        <img src="{{ asset('image/nw123.jpg') }}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Presentasi Dan Orientasi Untuk Guru Yang Berjudul "Menuju Sekolah Yang
-                                Menjunjung Nilai - Nilai Kemanusiaan"</h5>
-                            <p class="card-text">Medan, 02 Oktober 2022. Dalam rangka Hari Anti - Kekerasan Internasional
-                                dan Peringatan Kelahiran Mahatma Gan...
-                            </p>
-                            <a href="#" class="btn button-color text-white fs-6">Selengkapnya...</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item carouseljs">
-                    <div class="card m-2" style="width: 30rem;">
-                        <img src="" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                                the card's content.</p>
-                            <a href="#" class="btn button-color text-white fs-6">Selengkapnya...</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item carouseljs">
-                    <div class="card m-2" style="width: 30rem;">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                                the card's content.</p>
-                            <a href="#" class="btn button-color text-white fs-6">Selengkapnya...</a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

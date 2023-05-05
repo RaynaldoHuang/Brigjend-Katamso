@@ -1,5 +1,5 @@
 {{-- footer --}}
-<div class="row custom-footer text-center text4 w-100 pt-5 pe-5 ps-5 pb-3 m-0">
+<div class="row custom-footer text-center text4 w-100 pt-5 pe-5 ps-5 pb-3 m-0 mt-5">
 
     {{-- column1 --}}
     <div class="col-md-3 d-flex justify-content-center align-items-start">
