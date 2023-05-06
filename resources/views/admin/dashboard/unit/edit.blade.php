@@ -164,6 +164,80 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-12">
+            <div class="bg-white p-4 rounded-3">
+                <div class=" border-bottom border-dark border-opacity-25">
+                    <h5>Extrakulikuler</h5>
+                    <p class="text-muted">Menu ini bertujuan mengedit atau merubah unit extrakulikuler
+                        pada halaman website.</p>
+                </div>
+
+                <div class="mt-2">
+                    <div class="d-flex justify-content-end gap-2 align-items-center">
+                        @if(session('success'))
+                            <div class="text-success fw-semibold" role="alert">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
+
+                        <form action="{{route('admin.units.extra.create')}}" method="POST">
+                            @csrf
+                            <input type="hidden" name="unitId" value="{{$unit->id}}">
+                            <button type="submit" class="btn btn-primary">Tambah Extrakulikuler</button>
+                        </form>
+                    </div>
+
+                    <table class="table mt-2">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($unit->extra as $item)
+                            <tr>
+                                <td class="fw-semibold">{{ $loop->iteration }}</td>
+                                <td>
+                                    <img src="{{ asset($item->image) }}"
+                                         alt="Extrakulikuler Image" class="img-fluid" style="max-width:
+                                         100px">
+                                </td>
+                                <td>{{ $item->name }}</td>
+                                <td class="fw-semibold">
+                                    @if($item->is_active)
+                                        <span class="badge bg-success">Published</span>
+                                    @else
+                                        <span class="badge bg-danger">Unpublished</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    <div class="d-flex">
+                                        <a href="{{route('admin.units.extra.edit', $item->id)}}"
+                                           class="btn btn-link">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <form action="{{route('admin.units.extra.destroy')}}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{ $item->id }}">
+                                            <button type="submit" class="btn btn-link text-danger">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 
 @endsection

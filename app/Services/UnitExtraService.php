@@ -2,25 +2,25 @@
 
 namespace App\Services;
 
+use App\Models\UnitExtra;
 use App\Models\UnitProgram;
 use App\Models\Units;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
-class UnitProgramService
+class UnitExtraService
 {
     public function update($request, $id)
     {
         DB::beginTransaction();
 
         try {
-            $unitProgram = UnitProgram::findOrFail($id);
-
+            $unitExtra = UnitExtra::findOrFail($id);
 
             if ($request->image) {
-                if ($unitProgram->image) {
-                    $oldFile = public_path($unitProgram->image);
+                if ($unitExtra->image) {
+                    $oldFile = public_path($unitExtra->image);
 
                     if (file_exists($oldFile)) {
                         unlink($oldFile);
@@ -34,17 +34,15 @@ class UnitProgramService
                     return false;
                 }
 
-                $unitProgram->update([
-                    'title' => $request->title,
-                    'description' => $request->description,
-                    'is_published' => $request->is_published,
+                $unitExtra->update([
+                    'name' => $request->name,
                     'image' => $path,
+                    'is_active' => $request->is_active,
                 ]);
             } else {
-                $unitProgram->update([
-                    'title' => $request->title,
-                    'description' => $request->description,
-                    'is_published' => $request->is_published,
+                $unitExtra->update([
+                    'name' => $request->name,
+                    'is_active' => $request->is_active,
                 ]);
             }
 
@@ -64,9 +62,9 @@ class UnitProgramService
         if ($file) {
             $image = $file;
             $name = time() . '.' . $image->getClientOriginalExtension();
-            $destinationPath = public_path('/images/unitProgram');
+            $destinationPath = public_path('/images/unitExtra');
             $image->move($destinationPath, $name);
-            $path = '/images/unitProgram/' . $name;
+            $path = '/images/unitExtra/' . $name;
         }
 
         return $path;
@@ -86,11 +84,10 @@ class UnitProgramService
                 return false;
             }
 
-            $unit->program()->create([
-                'title' => $request->title,
-                'description' => $request->description,
+            $unit->extra()->create([
+                'name' => $request->name,
                 'image' => $path,
-                'alt' => Str::lower($request->title)
+                'alt' => Str::lower($request->name)
             ]);
 
             DB::commit();
@@ -105,10 +102,9 @@ class UnitProgramService
     public function validateInput($request)
     {
         $validator = Validator::make($request->all(), [
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
+            'name' => 'required|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:5120',
-            'is_published' => 'nullable|boolean'
+            'is_active' => 'nullable|boolean'
         ]);
 
         if ($validator->fails()) {
