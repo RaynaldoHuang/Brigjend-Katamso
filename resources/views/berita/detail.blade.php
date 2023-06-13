@@ -11,7 +11,7 @@
             {{ $berita->title }}
         </div>
         <div class="fs-5 font-cairo">
-            {{ $berita->content }}
+            {!! $berita->content !!}
         </div>
     </div>
 @endsection
