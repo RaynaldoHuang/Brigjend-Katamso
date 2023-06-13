@@ -16,5 +16,33 @@
                 </div>
             @endforeach
         </div>
+
+        <nav aria-label="nav-pagination" class="d-flex justify-content-end">
+            <ul class="pagination">
+                @if($fasilitas->currentPage() > 1)
+                    <li class="page-item">
+                        <a class="page-link" href="{{ $fasilitas->previousPageUrl() }}"
+                           aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                @endif
+
+                @for($i = 1; $i <= $fasilitas->lastPage(); $i++)
+                    <li class="page-item {{ $fasilitas->currentPage() == $i ? 'active' : '' }}">
+                        <a class="page-link" href="{{ $fasilitas->url($i) }}">{{ $i }}</a>
+                    </li>
+                @endfor
+
+                @if($fasilitas->currentPage() < $fasilitas->lastPage())
+                    <li class="page-item">
+                        <a class="page-link" href="{{ $fasilitas->nextPageUrl() }}"
+                           aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                @endif
+            </ul>
+        </nav>
     </div>
 @endsection

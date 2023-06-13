@@ -4,6 +4,8 @@ namespace App\Http\Controllers\MainApp;
 
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
+use App\Models\ImageConfig;
+use App\Models\Ktc;
 
 class AboutController extends BaseController
 {
@@ -19,6 +21,12 @@ class AboutController extends BaseController
 
     public function ktc()
     {
-        return view('ktc.ktc');
+        $ktc = Ktc::query()->orderBy('id', 'desc')->get();
+        $banner = ImageConfig::query()->where('slug', 'KTC')->first();
+
+        return view('ktc.ktc', [
+            'ktc' => $ktc,
+            'banner' => $banner
+        ]);
     }
 }

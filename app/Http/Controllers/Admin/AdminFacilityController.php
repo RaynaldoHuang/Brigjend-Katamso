@@ -35,7 +35,7 @@ class AdminFacilityController extends Controller
         $status = $facilityService->create($request);
 
         if ($status) {
-            handleSession(200, "Berhasil menambahkan Fasilitas");
+            handleSession(200, "Berhasil membuat Fasilitas");
             return redirect()->route('admin.facility');
         } else {
             handleSession(400, "Gagal membuat fasilitas");
@@ -52,22 +52,22 @@ class AdminFacilityController extends Controller
         ]);
     }
 
-    public function update(Request $request, string $id, FacilityService $achievementService)
+    public function update(Request $request, string $id, FacilityService $facilityService)
     {
-        $validate = $achievementService->validateInputUpdate($request);
+        $validate = $facilityService->validateInputUpdate($request);
 
         if ($validate !== true) {
             handleSession(422, $validate->messages());
             return redirect()->back()->withInput($request->all());
         }
 
-        $status = $achievementService->update($request, $id);
+        $status = $facilityService->update($request, $id);
 
         if ($status) {
-            handleSession(200, "Berhasil menambahkan Fasilitas");
+            handleSession(200, "Berhasil memperbaharui Fasilitas");
             return redirect()->route('admin.facility');
         } else {
-            handleSession(400, "Gagal membuat fasilitas");
+            handleSession(400, "Gagal memperbaharui fasilitas");
             return redirect()->back()->withInput($request->all());
         }
     }

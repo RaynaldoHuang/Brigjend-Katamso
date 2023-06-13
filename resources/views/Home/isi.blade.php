@@ -65,49 +65,21 @@
         }
 
         /* end css carousel berita */
-        .button-color {
-            background-color: #060585
-        }
-
-        .button-color:hover {
-            background-color: #0000dd
-        }
     </style>
 @endsection
 
 @section('content')
     {{-- carousel --}}
 
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
-        <div class="carousel-indicators">
-            @for ($i = 0; $i < count($carouselImages); $i++)
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={{ $i }}
-                    class="{{ $i == 0 ? 'active' : '' }}" aria-current="true"
-                    aria-label={{ $carouselImages[$i]->name }}></button>
-            @endfor
-        </div>
-        <div class="carousel-inner">
-            @foreach ($carouselImages as $item)
-                <div class="carousel-item active">
-                    <img src="{{ asset($item->image) }}" class="d-block w-100" alt={{ $item->name }}>
-                </div>
-            @endforeach
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="prev" style="width: 5%">
-            <i class="fa-solid fa-circle-chevron-left fa-2x"></i>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="next" style="width: 5%">
-            <i class="fa-solid fa-circle-chevron-right fa-2x"></i>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
+    @include('Home/banner', [
+        'id_carousel' => 'bannerCarousel',
+        'condition_carousel' => 'd-block',
+        'class_carousel' => 'carousel-banner',
+    ])
 
     {{-- welcome-text --}}
-    <div class="text1 text-center" style="background-color:#060585;height:60px">
-        <h4 class="text-white m-0">Selamat Datang di Yayasan Nasional Brigjend Katamso</h4>
+    <div class="text1 d-flex align-items-center" style="background-color:#060585;height:60px">
+        <h4 class="text-white m-0 text-center w-100">Selamat Datang di Yayasan Nasional Brigjend Katamso</h4>
     </div>
 
     {{-- why-text --}}
@@ -218,14 +190,16 @@
                 </div>
             </div>
             <div class="col-md-6 text-center">
-                <img src="{{ asset('image/image1.png') }}" alt="" class="img-fluid d-none d-xl-block"
-                    style="max-width:35rem">
-                <img src="{{ asset('image/image1.png') }}" alt="" class="img-fluid d-none d-lg-block d-xl-none"
-                    style="max-width:30rem">
-                <img src="{{ asset('image/image1.png') }}" alt="" class="img-fluid d-none d-md-block d-lg-none"
-                    style="max-width:23rem">
-                <img src="{{ asset('image/image1.png') }}" alt="" class="img-fluid d-md-none"
-                    style="max-height:20rem">
+                @if ($imageVisi)
+                    <img src="{{ $imageVisi->image_link }}" alt="" class="img-fluid d-none d-xl-block"
+                        style="max-width:35rem">
+                    <img src="{{ $imageVisi->image_link }}" alt="" class="img-fluid d-none d-lg-block d-xl-none"
+                        style="max-width:30rem">
+                    <img src="{{ $imageVisi->image_link }}" alt="" class="img-fluid d-none d-md-block d-lg-none"
+                        style="max-width:23rem">
+                    <img src="{{ $imageVisi->image_link }}" alt="" class="img-fluid d-md-none"
+                        style="max-height:20rem">
+                @endif
             </div>
         </div>
     </div>
@@ -273,110 +247,119 @@
                 </div>
             </div>
             <div class="col-md-6 text-center order-md-1">
-                <img src="{{ asset('image/image2.png') }}" alt="" class="img-fluid d-none d-xl-block"
-                    style="max-width:35rem">
-                <img src="{{ asset('image/image2.png') }}" alt="" class="img-fluid d-none d-lg-block d-xl-none"
-                    style="max-width:30rem">
-                <img src="{{ asset('image/image2.png') }}" alt="" class="img-fluid d-none d-md-block d-lg-none"
-                    style="max-width:23rem">
-                <img src="{{ asset('image/image2.png') }}" alt="" class="img-fluid d-md-none"
-                    style="max-height:20rem">
+                @if ($imageMisi)
+                    <img src="{{ $imageMisi->image_link }}" alt="" class="img-fluid d-none d-xl-block"
+                        style="max-width:35rem">
+                    <img src="{{ $imageMisi->image_link }}" alt="" class="img-fluid d-none d-lg-block d-xl-none"
+                        style="max-width:30rem">
+                    <img src="{{ $imageMisi->image_link }}" alt="" class="img-fluid d-none d-md-block d-lg-none"
+                        style="max-width:23rem">
+                    <img src="{{ $imageMisi->image_link }}" alt="" class="img-fluid d-md-none"
+                        style="max-height:20rem">
+                @endif
             </div>
         </div>
     </div>
 
     {{-- unit --}}
-    <div class="font-cairo text-default fw-bold fs-2 text-center mt-5">
-        Unit sekolah
-    </div>
-    <div class="container w-100 mt-4 unit-custom mb-4">
-        <div class="row text-center d-flex justify-content-evenly">
-            <div class="col-md-2 px-auto mb-4">
-                <a href="{{ route('unittkdanpg') }}">
-                    <img src="{{ asset('image/unit tk.png') }}" alt="" class="img-fluid"
+    <div class="container">
+        <div class="font-cairo text-default fw-bold fs-2 text-center mt-5">
+            Unit sekolah
+        </div>
+        <div class="container w-100 mt-4 unit-custom mb-4">
+            <div class="row text-center d-flex justify-content-evenly">
+                <div class="col-md-2 px-auto mb-4">
+                    <a href="{{ route('unittkdanpg') }}">
+                        <img src="{{ asset('image/unit tk.png') }}" alt="" class="img-fluid"
+                            style="max-height: 300px">
+                    </a>
+                </div>
+                <div class="col-md-2 px-auto mb-4">
+                    <a href="{{ route('unittkdanpg') }}">
+                        <img src="{{ asset('image/unit tk.png') }}" alt="" class="img-fluid"
+                            style="max-height: 300px">
+                    </a>
+                </div>
+                <div class="col-md-2 px-auto mb-4">
+                    <img src="{{ asset('image/unit sd.png') }}" alt="" class="img-fluid"
                         style="max-height: 300px">
-                </a>
-            </div>
-            <div class="col-md-2 px-auto mb-4">
-                <a href="{{ route('unittkdanpg') }}">
-                    <img src="{{ asset('image/unit tk.png') }}" alt="" class="img-fluid"
+                </div>
+                <div class="col-md-2 px-auto mb-4">
+                    <img src="{{ asset('image/UNIT 1.png') }}" alt="" class="img-fluid"
                         style="max-height: 300px">
-                </a>
-            </div>
-            <div class="col-md-2 px-auto mb-4">
-                <img src="{{ asset('image/unit sd.png') }}" alt="" class="img-fluid" style="max-height: 300px">
-            </div>
-            <div class="col-md-2 px-auto mb-4">
-                <img src="{{ asset('image/UNIT 1.png') }}" alt="" class="img-fluid" style="max-height: 300px">
-            </div>
-            <div class="col-md-2 px-auto mb-4">
-                <img src="{{ asset('image/UNIT 1.png') }}" alt="" class="img-fluid" style="max-height: 300px">
-            </div>
-            <div class="col-md-2 px-auto mb-4">
-                <img src="{{ asset('image/UNIT 1.png') }}" alt="" class="img-fluid" style="max-height: 300px">
+                </div>
+                <div class="col-md-2 px-auto mb-4">
+                    <img src="{{ asset('image/UNIT 1.png') }}" alt="" class="img-fluid"
+                        style="max-height: 300px">
+                </div>
+                <div class="col-md-2 px-auto mb-4">
+                    <img src="{{ asset('image/UNIT 1.png') }}" alt="" class="img-fluid"
+                        style="max-height: 300px">
+                </div>
             </div>
         </div>
     </div>
 
-
-    {{-- berita --}}
-    <div class="p-4" id="carouselberita" style="background-color: #eaeaea">
-        <div class="row m-2">
-            <div class="col-6">
-                <div class="text-black fw-bold fs-4 font-cairo">
-                    Berita & Kegiatan
+    <div class="container">
+        {{-- berita --}}
+        <div class="p-4" id="carouselberita" style="background-color: #eaeaea">
+            <div class="row m-2">
+                <div class="col-6">
+                    <div class="text-black fw-bold fs-4 font-cairo">
+                        Berita & Kegiatan
+                    </div>
+                </div>
+                <div class="col-6 text-end">
+                    <div class="d-none d-lg-block">
+                        <a class="btn" href="#beritaCarouselLG" role="button" data-bs-slide="prev"
+                            style="background-color: #efa343">
+                            <i class="fa fa-arrow-left"></i>
+                        </a>
+                        <a class="btn" href="#beritaCarouselLG" role="button" data-bs-slide="next"
+                            style="background-color: #efa343">
+                            <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="d-none d-md-block d-lg-none">
+                        <a class="btn" href="#beritaCarouselMD" role="button" data-bs-slide="prev"
+                            style="background-color: #efa343">
+                            <i class="fa fa-arrow-left"></i>
+                        </a>
+                        <a class="btn" href="#beritaCarouselMD" role="button" data-bs-slide="next"
+                            style="background-color: #efa343">
+                            <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="d-block d-md-none">
+                        <a class="btn" href="#beritaCarouselSM" role="button" data-bs-slide="prev"
+                            style="background-color: #efa343">
+                            <i class="fa fa-arrow-left"></i>
+                        </a>
+                        <a class="btn" href="#beritaCarouselSM" role="button" data-bs-slide="next"
+                            style="background-color: #efa343">
+                            <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div class="col-6 text-end">
-                <div class="d-none d-lg-block">
-                    <a class="btn" href="#beritaCarouselLG" role="button" data-bs-slide="prev"
-                        style="background-color: #efa343">
-                        <i class="fa fa-arrow-left"></i>
-                    </a>
-                    <a class="btn" href="#beritaCarouselLG" role="button" data-bs-slide="next"
-                        style="background-color: #efa343">
-                        <i class="fa fa-arrow-right"></i>
-                    </a>
+            <div id="berita">
+                <div class="col-12">
+                    @include('Home/berita', [
+                        'id_carousel' => 'beritaCarouselLG',
+                        'condition_carousel' => 'd-none d-lg-block',
+                        'class_carousel' => 'carousel-berita',
+                    ])
+                    @include('Home/berita', [
+                        'id_carousel' => 'beritaCarouselMD',
+                        'condition_carousel' => 'd-none d-md-block d-lg-none',
+                        'class_carousel' => 'carousel-berita-md',
+                    ])
+                    @include('Home/berita', [
+                        'id_carousel' => 'beritaCarouselSM',
+                        'condition_carousel' => 'd-block d-md-none',
+                        'class_carousel' => 'carousel-berita-sm',
+                    ])
                 </div>
-                <div class="d-none d-md-block d-lg-none">
-                    <a class="btn" href="#beritaCarouselMD" role="button" data-bs-slide="prev"
-                        style="background-color: #efa343">
-                        <i class="fa fa-arrow-left"></i>
-                    </a>
-                    <a class="btn" href="#beritaCarouselMD" role="button" data-bs-slide="next"
-                        style="background-color: #efa343">
-                        <i class="fa fa-arrow-right"></i>
-                    </a>
-                </div>
-                <div class="d-block d-md-none">
-                    <a class="btn" href="#beritaCarouselSM" role="button" data-bs-slide="prev"
-                        style="background-color: #efa343">
-                        <i class="fa fa-arrow-left"></i>
-                    </a>
-                    <a class="btn" href="#beritaCarouselSM" role="button" data-bs-slide="next"
-                        style="background-color: #efa343">
-                        <i class="fa fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div id="berita">
-            <div class="col-12">
-                @include('Home/berita', [
-                    'id_carousel' => 'beritaCarouselLG',
-                    'condition_carousel' => 'd-none d-lg-block',
-                    'class_carousel' => 'carousel-berita',
-                ])
-                @include('Home/berita', [
-                    'id_carousel' => 'beritaCarouselMD',
-                    'condition_carousel' => 'd-none d-md-block d-lg-none',
-                    'class_carousel' => 'carousel-berita-md',
-                ])
-                @include('Home/berita', [
-                    'id_carousel' => 'beritaCarouselSM',
-                    'condition_carousel' => 'd-block d-md-none',
-                    'class_carousel' => 'carousel-berita-sm',
-                ])
             </div>
         </div>
     </div>

@@ -27,6 +27,8 @@ class DatabaseSeeder extends Seeder
             UnitBrosurSeeder::class,
             UnitProgramSeeder::class,
             FacilitySeeder::class,
+            ImageConfigSeeder::class,
+            KtcSeeder::class,
         ]);
     }
 }

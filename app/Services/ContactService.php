@@ -8,35 +8,6 @@ use Illuminate\Support\Facades\Validator;
 
 class ContactService
 {
-    public function create($request)
-    {
-        DB::beginTransaction();
-
-        try {
-            $checkContact = self::checkAvailable($request->name);
-
-            if ($checkContact) {
-                $checkContact->update([
-                    'email' => $request->email,
-                    'phone' => $request->phone,
-                ]);
-            } else {
-                Contact::create([
-                    'name' => $request->name,
-                    'email' => $request->email,
-                    'phone' => $request->phone,
-                ]);
-            }
-
-            DB::commit();
-
-            return true;
-        } catch (\Throwable $th) {
-            DB::rollBack();
-            throw $th;
-        }
-    }
-
     public function checkAvailable($name)
     {
         $contact = Contact::where('name', $name)->first();
@@ -70,7 +41,7 @@ class ContactService
     public function validateInput($request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'nullable|string|max:255',
+            // 'name' => 'nullable|string|max:255',
             'description' => 'required|string|max:255',
         ]);
 

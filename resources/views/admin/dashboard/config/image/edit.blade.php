@@ -1,13 +1,14 @@
 @extends('admin.dashboard.layouts.index')
 
-{{-- Admin Create --}}
+{{-- Fasilitas Edit --}}
 @section('content')
     <div class="row p-3 gy-4 mx-0">
         <div class="col-12">
             <div class="bg-white p-4 rounded-3">
                 <div class=" border-bottom border-dark border-opacity-25">
-                    <h5>Create Carousel</h5>
-                    <p class="text-muted">Menu ini bertujuan menambahkan data foto carousel pada website.</p>
+                    <h5>Edit Fasilitas</h5>
+                    <p class="text-muted">Menu ini bertujuan mengubah data prestasi pada halaman
+                        website.</p>
                 </div>
 
                 <div class="mt-2">
@@ -19,30 +20,19 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('admin.carousel.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.config.image.update', $imageConfig->id) }}" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
                         <div class="mb-3">
-                            <label for="name" class="form-label">Title</label>
-                            <input type="text" class="form-control" id="name" name="name"
-                                value="{{ old('name') }}" placeholder="">
+                            <label for="slug" class="form-label">Name</label>
+                            <input type="text" name="slug" id="slug" class="form-control" disabled
+                                value="{{ old('slug', $imageConfig->slug) }}">
                         </div>
 
                         <div class="mb-3">
-                            <label for="action" class="form-label">Aciton</label>
-                            <input type="text" class="form-control" id="action" name="action"
-                                value="{{ old('action') }}" placeholder="">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="url" class="form-label">URL</label>
-                            <input type="text" class="form-control" id="url" name="url"
-                                value="{{ old('url') }}" placeholder="">
-                        </div>
-
-                        <div class="mb-3">
-                            <div class="blockquote-footer">Isi Action dan Url apabila ingin menambahkan tombol pada
-                                carousel</div>
-                                <div class="blockquote-footer">Url harus menggunakan www. atau http:// atau https://</div>
+                            <img src="{{ asset($imageConfig->image) }}" alt="Facility image"
+                                class="img-fluid w-25 h-25 rounded-3">
                         </div>
 
                         <div class="mb-3">

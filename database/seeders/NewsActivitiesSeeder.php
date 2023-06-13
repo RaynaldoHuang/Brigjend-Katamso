@@ -30,17 +30,9 @@ class NewsActivitiesSeeder extends Seeder
         ]);
 
         \App\Models\NewsActivities::create([
-            'title' => 'Pengumuman Hasil Seleksi PPDB Online Tahun Pelajaran 2021/2022',
-            'slug' => 'pengumuman-hasil-seleksi-ppdb-online-tahun-pelajaran-2021-2022',
-            'image' => 'image/nw122.jpg',
-            'content' => 'Pengumuman Hasil Seleksi PPDB Online Tahun Pelajaran 2021/2022. Selamat kepada siswa/i yang dinyatakan diterima sebagai siswa/i baru di SDIT Kupu-Kupu Transformation Center. Untuk melihat hasil seleksi PPDB Online Tahun Pelajaran 2021/2022.',
-            'status' => 1,
-        ]);
-
-        \App\Models\NewsActivities::create([
             'title' => 'Pengisian Formulir Pendaftaran PPDB Online Tahun Pelajaran 2021/2022',
             'slug' => 'pengisian-formulir-pendaftaran-ppdb-online-tahun-pelajaran-2021-2022',
-            'image' => 'image/nw123.jpg',
+            'image' => 'image/unit tk 1.png',
             'content' => 'Pengumuman Hasil Seleksi PPDB Online Tahun Pelajaran 2021/2022. Selamat kepada siswa/i yang dinyatakan diterima sebagai siswa/i baru di SDIT Kupu-Kupu Transformation Center. Untuk melihat hasil seleksi PPDB Online Tahun Pelajaran 2021/2022.',
             'status' => 1,
         ]);

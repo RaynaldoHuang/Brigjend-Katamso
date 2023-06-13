@@ -1,6 +1,6 @@
 @extends('admin.dashboard.layouts.index')
 
-{{--Carousel Edit--}}
+{{-- Carousel Edit --}}
 @section('content')
     <div class="row p-3 gy-4 mx-0">
         <div class="col-12">
@@ -11,51 +11,65 @@
                 </div>
 
                 <div class="mt-2">
-                    @if(session('validation'))
+                    @if (session('validation'))
                         <div class="alert alert-danger" role="alert">
-                            @foreach(session('validation') as $error)
+                            @foreach (session('validation') as $error)
                                 <li>{{ $error[0] }}</li>
                             @endforeach
                         </div>
                     @endif
 
                     <form action="{{ route('admin.carousel.update', $carouselImage->id) }}" method="POST"
-                          enctype="multipart/form-data">
+                        enctype="multipart/form-data">
                         @method('PUT')
                         @csrf
 
                         <div class="mb-3">
                             <label for="name" class="form-label">Title</label>
                             <input type="text" class="form-control" id="name" name="name"
-                                   placeholder="Masukkan judul carousel" value="{{$carouselImage->name}}">
+                                placeholder="Masukkan judul carousel" value="{{ old('name', $carouselImage->name) }}">
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label for="action" class="form-label">Aciton</label>
+                            <input type="text" class="form-control" id="action" name="action"
+                                value="{{ old('action', $carouselImage->action) }}" placeholder="">
                         </div>
 
                         <div class="mb-3">
-                            <img src="{{asset($carouselImage->image)}}" alt="carousel image"
-                                 class="img-fluid w-75 rounded-3">
+                            <label for="url" class="form-label">URL</label>
+                            <input type="text" class="form-control" id="url" name="url"
+                                value="{{ old('url', $carouselImage->url) }}" placeholder="">
+                        </div>
+
+                        <div class="mb-5">
+                            <div class="blockquote-footer">Isi Action dan Url apabila ingin menambahkan tombol pada
+                                carousel</div>
+                            <div class="blockquote-footer">Url harus menggunakan www. atau http:// atau https://</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <img src="{{ asset($carouselImage->image) }}" alt="carousel image"
+                                class="img-fluid w-75 rounded-3">
                         </div>
 
                         <div class="mb-3">
                             <label for="image" class="form-label">Image</label>
                             <input type="file" class="form-control" id="image" name="image"
-                                   value="{{$carouselImage->image}}">
+                                value="{{ $carouselImage->image }}">
                             <div id="imageHelp" class="form-text">Image must be in .jpg, .jpeg, .png format.
                             </div>
                         </div>
 
                         <div class="mb-3">
                             <label for="status" class="form-label">Status</label>
-                            <select class="form-select" aria-label="Carousel status" id="status"
-                                    name="status">
-                                <option value="1"
-                                        @if($carouselImage->is_active) selected @endif
-                                >
+                            <select class="form-select" aria-label="Carousel status" id="status" name="status">
+                                <option value="1" @if ($carouselImage->is_active) selected @endif>
                                     Aktif
                                 </option>
 
-                                <option value="0"
-                                        @if(!$carouselImage->is_active) selected @endif
-                                >
+                                <option value="0" @if (!$carouselImage->is_active) selected @endif>
                                     Tidak Aktif
                                 </option>
                             </select>

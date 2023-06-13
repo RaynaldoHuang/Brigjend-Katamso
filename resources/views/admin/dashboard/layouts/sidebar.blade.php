@@ -97,6 +97,17 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="col py-3">
+                <a href="{{route('admin.config.image')}}" class="text-decoration-none text-white">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-images me-3"></i>
+                        <span class="fw-semibold">Image Config</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
         @if(auth()->user()->is_super ?? false)
             <div class="row">
                 <div class="col py-3">

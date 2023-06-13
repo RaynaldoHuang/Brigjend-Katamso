@@ -10,10 +10,7 @@ class ContactController extends BaseController
 {
     public function index()
     {
-        $contact = Contact::all();
 
-        return view('kontak.kontak', [
-            'contacts' => $contact
-        ]);
+        return view('kontak.kontak', []);
     }
 }

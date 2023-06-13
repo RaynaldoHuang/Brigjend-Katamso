@@ -15,29 +15,27 @@
                     Yayasan Perguruan Nasional Brigjend Katamso 1
                 </div>
                 <div class="row">
-                    @foreach($contacts as $contact)
-                        @if($contact->name === 'Brigjend Katamso 1')
-                            <div class="col-md-6">
-                                <div class="font-cairo text-default fw-bold fs-4 mt-3">
-                                    Telepon
-                                </div>
-                                <div class="fw-medium mt-1">
-                                    {{$contact->phone }}
-                                </div>
+                    @if ($contacts->telp_bk_1)
+                        <div class="col-md-6">
+                            <div class="font-cairo text-default fw-bold fs-4 mt-3">
+                                Telepon
                             </div>
-                        @endif
+                            <div class="fw-medium mt-1">
+                                {{ $contacts->telp_bk_1->description }}
+                            </div>
+                        </div>
+                    @endif
 
-                        @if($contact->name === 'Brigjend Katamso 1')
-                            <div class="col-md-6">
-                                <div class="font-cairo text-default fw-bold fs-4 mt-3">
-                                    E-mail
-                                </div>
-                                <div class="fw-medium mt-1">
-                                    <a href="">{{$contact->email}}</a>
-                                </div>
+                    @if ($contacts->email_bk)
+                        <div class="col-md-6">
+                            <div class="font-cairo text-default fw-bold fs-4 mt-3">
+                                E-mail
                             </div>
-                        @endif
-                    @endforeach
+                            <div class="fw-medium mt-1">
+                                <span class="text-primary">{{ $contacts->email_bk->description }}</span class="text-primary">
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
             <div class="col-md-6">
@@ -52,29 +50,27 @@
                     Yayasan Perguruan Nasional Brigjend Katamso 2
                 </div>
                 <div class="row">
-                    @foreach($contacts as $contact)
-                        @if($contact->name === 'Brigjend Katamso 2')
-                            <div class="col-md-6">
-                                <div class="font-cairo text-default fw-bold fs-4 mt-3">
-                                    Telepon
-                                </div>
-                                <div class="fw-medium mt-1">
-                                    {{$contact->phone }}
-                                </div>
+                    @if ($contacts->telp_bk_1)
+                        <div class="col-md-6">
+                            <div class="font-cairo text-default fw-bold fs-4 mt-3">
+                                Telepon
                             </div>
-                        @endif
+                            <div class="fw-medium mt-1">
+                                {{ $contacts->telp_bk_1->description }}
+                            </div>
+                        </div>
+                    @endif
 
-                        @if($contact->name === 'Brigjend Katamso 2')
-                            <div class="col-md-6">
-                                <div class="font-cairo text-default fw-bold fs-4 mt-3">
-                                    E-mail
-                                </div>
-                                <div class="fw-medium mt-1">
-                                    <a href="">{{$contact->email}}</a>
-                                </div>
+                    @if ($contacts->email_bk)
+                        <div class="col-md-6">
+                            <div class="font-cairo text-default fw-bold fs-4 mt-3">
+                                E-mail
                             </div>
-                        @endif
-                    @endforeach
+                            <div class="fw-medium mt-1">
+                                <span class="text-primary">{{ $contacts->email_bk->description }}</span class="text-primary">
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
             <div class="font-cairo text-default fw-bold fs-2 text-center mt-5">
@@ -82,22 +78,22 @@
             </div>
             <div class="row mt-4 m-0">
                 <div class="col-md-4 text-center">
-                    <a href=""><img src="{{ asset('image/instagram.png') }}" alt="..."
-                                    style="max-width: 80px"></a>
+                    <a href="{{ $contacts->instagram ? $contacts->instagram->description : '#' }}"><img src="{{ asset('image/instagram.png') }}" alt="..."
+                            style="max-width: 80px"></a>
                     <div class="font-cairo text-default fw-bold fs-3">
                         katamso.sch.id
                     </div>
                 </div>
                 <div class="col-md-4 text-center">
-                    <a href=""><img src="{{ asset('image/youtube.png') }}" alt="..."
-                                    style="max-width: 80px"></a>
+                    <a href="{{ $contacts->youtube ? $contacts->youtube->description : '#' }}"><img src="{{ asset('image/youtube.png') }}" alt="..."
+                            style="max-width: 80px"></a>
                     <div class="font-cairo text-default fw-bold fs-3">
                         Sekolah Brigjend Katamso
                     </div>
                 </div>
                 <div class="col-md-4 text-center">
-                    <a href=""><img src="{{ asset('image/facebook.png') }}" alt="..."
-                                    style="max-width: 80px"></a>
+                    <a href="{{ $contacts->facebook ? $contacts->facebook->description : '#' }}"><img src="{{ asset('image/facebook.png') }}" alt="..."
+                            style="max-width: 80px"></a>
                     <div class="font-cairo text-default fw-bold fs-3">
                         brigjendkatamso.sch
                     </div>

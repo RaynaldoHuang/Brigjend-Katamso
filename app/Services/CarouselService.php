@@ -23,6 +23,8 @@ class CarouselService
 
             CarouselImage::create([
                 'name' => $request->name,
+                'action' => $request->action,
+                'url' => $request->url,
                 'image' => $path,
             ]);
 
@@ -33,21 +35,6 @@ class CarouselService
             DB::rollBack();
             throw $th;
         }
-    }
-
-    public function uploadFile($file)
-    {
-        $path = null;
-
-        if ($file) {
-            $image = $file;
-            $name = time() . '.' . $image->getClientOriginalExtension();
-            $destinationPath = public_path('/images/carousel');
-            $image->move($destinationPath, $name);
-            $path = '/images/carousel/' . $name;
-        }
-
-        return $path;
     }
 
     public function updateCarousel($request, $id)
@@ -70,10 +57,14 @@ class CarouselService
                 $carouselImage->update([
                     'name' => $request->name,
                     'image' => $path,
+                    'action' => $request->action,
+                    'url' => $request->url,
                 ]);
             } else {
                 $carouselImage->update([
                     'name' => $request->name,
+                    'action' => $request->action,
+                    'url' => $request->url,
                 ]);
             }
 
@@ -91,6 +82,25 @@ class CarouselService
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5120',
+            'action' => 'nullable|string|max:255',
+            'url' => 'nullable|string|max:255',
+            'is_active' => 'nullable|boolean',
+        ]);
+
+        if ($validator->fails()) {
+            return $validator->errors();
+        }
+
+        return true;
+    }
+
+    public function validateUpdateInput($request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:5120',
+            'action' => 'nullable|string|max:255',
+            'url' => 'nullable|string|max:255',
             'is_active' => 'nullable|boolean',
         ]);
 

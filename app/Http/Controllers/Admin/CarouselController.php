@@ -54,7 +54,7 @@ class CarouselController extends Controller
 
     public function update(Request $request, string $id, CarouselService $carouselService)
     {
-        $validate = $carouselService->validateInput($request);
+        $validate = $carouselService->validateUpdateInput($request);
 
         if ($validate !== true) {
             handleSession(422, $validate->messages());

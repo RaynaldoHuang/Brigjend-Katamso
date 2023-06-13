@@ -59,7 +59,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item mb-xl-0 mb-2 me-3"><a href=""
+                        <li class="nav-item mb-xl-0 mb-2 me-3"><a href="{{route('berita')}}"
                                 class="text-default text-decoration-none">Berita</a>
                         </li>
                         <li class="nav-item mb-xl-0 mb-2 me-3"><a href="{{ route('kupukupu') }}"

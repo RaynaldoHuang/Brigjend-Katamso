@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminAchievementController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminFacilityController;
+use App\Http\Controllers\Admin\AdminImageConfigController;
 use App\Http\Controllers\Admin\AdminNewsController;
 use App\Http\Controllers\Admin\AdminUnitController;
 use App\Http\Controllers\Admin\AuthController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\Admin\CarouselController;
 use App\Http\Controllers\Admin\ContactController as AdminContactController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\MainApp\AboutController;
+use App\Http\Controllers\MainApp\BeritaController;
 use App\Http\Controllers\MainApp\BrosurController;
 use App\Http\Controllers\MainApp\ContactController;
 use App\Http\Controllers\MainApp\FasilitasController;
@@ -67,6 +69,8 @@ Route::get('/PrestasiNonAkademik', [PrestasiController::class, 'nonAkademik'])->
 Route::get('/Kontak', [ContactController::class, 'index'])->name('kontakbk');
 
 Route::get('/Fasilitas', [FasilitasController::class, 'view'])->name('fasilitas');
+Route::get('/Berita', [BeritaController::class, 'view'])->name('berita');
+Route::get('/Berita/{slug}', [BeritaController::class, 'detail'])->name('berita.detail');
 
 
 // Admin Routes
@@ -177,7 +181,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 
     Route::post('unit/extra', [AdminUnitController::class, 'destroyExtra'])->name('admin.units.extra.destroy');
 
-    // Achievements
+    // Facility
     Route::get('facility', [AdminFacilityController::class, 'view'])->name('admin.facility');
 
     Route::get('facility/create', [AdminFacilityController::class, 'create'])->name('admin.facility.create');
@@ -187,4 +191,10 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::put('facility/{id}', [AdminFacilityController::class, 'update'])->name('admin.facility.update');
 
     Route::post('facility', [AdminFacilityController::class, 'destroy'])->name('admin.facility.destroy');
+
+    // Image Config
+    Route::get('config/image', [AdminImageConfigController::class, 'view'])->name('admin.config.image');
+
+    Route::get('config/image/{id}', [AdminImageConfigController::class, 'edit'])->name('admin.config.image.edit');
+    Route::put('config/image/{id}', [AdminImageConfigController::class, 'update'])->name('admin.config.image.update');
 });

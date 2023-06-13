@@ -13,6 +13,8 @@ class CarouselImage extends Model
     protected $fillable = [
         'name',
         'image',
+        'action',
+        'url',
         'is_active',
         'created_by',
         'updated_by',

@@ -10,7 +10,7 @@ class FasilitasController extends BaseController
 {
     public function view()
     {
-        $fasilitas = Facility::query()->orderBy('id', 'asc')->get();
+        $fasilitas = Facility::query()->orderBy('id', 'desc')->paginate(10);
 
         return view('fasilitas.fasilitas', [
             'fasilitas' => $fasilitas,
