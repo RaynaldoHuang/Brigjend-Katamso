@@ -19,6 +19,8 @@ class CarouselImageSeeder extends Seeder
                 'name' => 'Carousel Image 1',
                 'image' => 'image/Artboard 1.png',
                 'is_active' => 1,
+                'action' => 'Klik Akuu..',
+                'url' => 'https://google.com'
             ],
             [
                 'name' => 'Carousel Image 2',
