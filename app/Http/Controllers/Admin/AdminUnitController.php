@@ -37,7 +37,8 @@ class AdminUnitController extends Controller
         $validate = $unitDetailService->validateInput($request);
 
         if ($validate !== true) {
-            return redirect()->back()->with('validation', $validate->messages());
+            handleSession(422, $validate->messages());
+            return redirect()->back()->withInput($request->all());
         }
 
         $status = $unitDetailService->update($request, $id);
@@ -47,6 +48,13 @@ class AdminUnitController extends Controller
         } else {
             return redirect()->back()->with('error', 'Gagal membuat Unit');
         }
+        if ($status) {
+            handleSession(200, "Berhasil memperbaharui Unit Detail");
+            return redirect()->route('admin.units');
+        } else {
+            handleSession(400, "Gagal memperbaharui Unit Detail");
+            return redirect()->back()->withInput($request->all());
+        }
     }
 
     public function update(Request $request, string $id, UnitService $unitService)
@@ -54,15 +62,18 @@ class AdminUnitController extends Controller
         $validate = $unitService->validateInput($request);
 
         if ($validate !== true) {
-            return redirect()->back()->with('validation', $validate->messages());
+            handleSession(422, $validate->messages());
+            return redirect()->back()->withInput($request->all());
         }
 
         $status = $unitService->update($request, $id);
 
         if ($status) {
-            return redirect()->route('admin.units')->with('success', 'Unit updated successfully');
+            handleSession(200, "Berhasil memperbaharui Unit");
+            return redirect()->route('admin.units');
         } else {
-            return redirect()->back()->with('error', 'Gagal membuat Unit');
+            handleSession(400, "Gagal memperbaharui Unit");
+            return redirect()->back()->withInput($request->all());
         }
     }
 
@@ -71,15 +82,18 @@ class AdminUnitController extends Controller
         $validate = $unitProgramService->validateInput($request);
 
         if ($validate !== true) {
-            return redirect()->back()->with('validation', $validate->messages());
+            handleSession(422, $validate->messages());
+            return redirect()->back()->withInput($request->all());
         }
 
         $status = $unitProgramService->update($request, $id);
 
         if ($status) {
-            return redirect()->route('admin.units')->with('success', 'Program updated successfully');
+            handleSession(200, "Berhasil memperbaharui Program");
+            return redirect()->route('admin.units');
         } else {
-            return redirect()->back()->with('error', 'Gagal membuat Unit');
+            handleSession(400, "Gagal memperbaharui Program");
+            return redirect()->back()->withInput($request->all());
         }
     }
 
@@ -115,15 +129,19 @@ class AdminUnitController extends Controller
         $validate = $unitProgramService->validateInput($request);
 
         if ($validate !== true) {
-            return redirect()->back()->with('validation', $validate->messages());
+            handleSession(422, $validate->messages());
+            return redirect()->back()->withInput($request->all());
         }
 
         $status = $unitProgramService->create($request);
+        dd('sakjskajs');
 
         if ($status) {
-            return redirect()->route('admin.units')->with('success', 'Program created successfully');
+            handleSession(200, "Berhasil membuat Program");
+            return redirect()->route('admin.units');
         } else {
-            return redirect()->back()->with('error', 'Gagal membuat Program');
+            handleSession(400, "Gagal membuat Program");
+            return redirect()->back()->withInput($request->all());
         }
     }
 
@@ -159,15 +177,18 @@ class AdminUnitController extends Controller
         $validate = $extraService->validateInput($request);
 
         if ($validate !== true) {
-            return redirect()->back()->with('validation', $validate->messages());
+            handleSession(422, $validate->messages());
+            return redirect()->back()->withInput($request->all());
         }
 
         $status = $extraService->update($request, $id);
 
         if ($status) {
-            return redirect()->route('admin.units')->with('success', 'Extrakulikuler updated successfully');
+            handleSession(200, "Berhasil memperbaharui Extrakuliker");
+            return redirect()->route('admin.units');
         } else {
-            return redirect()->back()->with('error', 'Gagal membuat Unit');
+            handleSession(400, "Gagal memperbaharui Extrakuliker");
+            return redirect()->back()->withInput($request->all());
         }
     }
 
@@ -176,15 +197,18 @@ class AdminUnitController extends Controller
         $validate = $extraService->validateInput($request);
 
         if ($validate !== true) {
-            return redirect()->back()->with('validation', $validate->messages());
+            handleSession(422, $validate->messages());
+            return redirect()->back()->withInput($request->all());
         }
 
         $status = $extraService->create($request);
 
         if ($status) {
-            return redirect()->route('admin.units')->with('success', 'Extrakulikuler created successfully');
+            handleSession(200, "Berhasil membuat Extrakulikuler");
+            return redirect()->route('admin.units');
         } else {
-            return redirect()->back()->with('error', 'Gagal membuat Program');
+            handleSession(400, "Gagal membuat Extrakulikuler");
+            return redirect()->back()->withInput($request->all());
         }
     }
 }

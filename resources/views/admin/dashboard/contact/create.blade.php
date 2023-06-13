@@ -1,6 +1,6 @@
 @extends('admin.dashboard.layouts.index')
 
-{{--Contact Create--}}
+{{-- Contact Create --}}
 @section('content')
     <div class="row p-3 gy-4 mx-0">
         <div class="col-12">
@@ -12,41 +12,26 @@
                 </div>
 
                 <div class="mt-2">
-                    @if(session('validationUpdate'))
+                    @if (session('validationUpdate'))
                         <div class="alert alert-danger" role="alert">
-                            @foreach(session('validationUpdate') as $error)
+                            @foreach (session('validationUpdate') as $error)
                                 <li>{{ $error[0] }}</li>
                             @endforeach
                         </div>
                     @endif
 
-                    <form action="{{route('admin.contact.store')}}" method="POST">
+                    <form action="{{ route('admin.contact.store') }}" method="POST">
                         @csrf
                         <div class="mb-3">
-                            <label for="name" class="form-label">Status</label>
-                            <select class="form-select" aria-label="Contact name" id="name"
-                                    name="name">
-                                <option value="Brigjend Katamso 1">
-                                    Brigjend Katamso 1
-                                </option>
-                                <option value="Brigjend Katamso 2">
-                                    Brigjend Katamso 2
-                                </option>
-                            </select>
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" name="name" id="name" value="{{ old('name') }}">
                         </div>
 
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="text" class="form-control" id="email" name="email"
-                                   placeholder="cth:name@email.com" value="{{ $contact->email }}">
-                            <div id="contactEmailHelper" class="form-text">Masukkan email dengan benar.</div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="phone" class="form-label">Email</label>
-                            <input type="text" class="form-control" id="phone" name="phone"
-                                   placeholder="cth:061 - 123 123" value="{{ $contact->phone }}">
-                            <div id="contactEmailHelper" class="form-text">Masukkan nomor handphone dengan
+                            <label for="description" class="form-label">Deskripsi</label>
+                            <input type="text" class="form-control" id="description" name="description"
+                                placeholder="cth:061 - 123 123 atau email@mail.com" value="{{ old('description') }}">
+                            <div id="contactEmailHelper" class="form-text">Masukkan nomor atau email dengan
                                 benar.
                             </div>
                         </div>

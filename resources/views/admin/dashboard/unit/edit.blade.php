@@ -61,8 +61,8 @@
                         @endif
 
 
-                        <form action="{{route('admin.units.program.create')}}" method="POST">
-                            @csrf
+                        <form action="{{route('admin.units.program.create')}}" method="get">
+                            {{-- @csrf --}}
                             <input type="hidden" name="unitId" value="{{$unit->id}}">
                             <button type="submit" class="btn btn-primary">Tambah Program</button>
                         </form>

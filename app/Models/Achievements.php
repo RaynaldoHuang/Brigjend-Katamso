@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Achievements extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $table = 'achievements';
 
@@ -16,9 +17,11 @@ class Achievements extends Model
         'student_name',
         'description',
         'type',
-        'year',
+        'date',
         'image',
         'is_published',
+        'created_by',
+        'updated_by',
     ];
 
     public function scopePublished($query)

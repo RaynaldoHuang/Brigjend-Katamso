@@ -14,7 +14,7 @@ class CarouselService
         DB::beginTransaction();
 
         try {
-            $path = $this->uploadFile($request->image);
+            $path = uploadFile($request->image, 'images/carousel');
 
             if (!$path) {
                 DB::rollBack();
@@ -58,13 +58,9 @@ class CarouselService
             $carouselImage = CarouselImage::findOrFail($id);
 
             if ($request->image) {
-                $oldFile = public_path($carouselImage->image);
+                $oldFile = $carouselImage->image;
 
-                if (file_exists($oldFile)) {
-                    unlink($oldFile);
-                }
-
-                $path = $this->uploadFile($request->image);
+                $path = uploadFile($request->image, 'images/carousel', $oldFile);
 
                 if (!$path) {
                     DB::rollBack();

@@ -11,7 +11,7 @@ class AdminAchievementController extends Controller
 {
     public function view()
     {
-        $achievement = Achievements::published()->paginate(5);
+        $achievement = Achievements::published()->orderBy('id', 'desc')->paginate(5);
 
         return view('admin.dashboard.achievement.view', [
             'achievement' => $achievement,
@@ -23,15 +23,18 @@ class AdminAchievementController extends Controller
         $validate = $achievementService->validateInput($request);
 
         if ($validate !== true) {
-            return redirect()->back()->with('validation', $validate->messages());
+            handleSession(422, $validate->messages());
+            return redirect()->back()->withInput($request->all());
         }
 
         $status = $achievementService->create($request);
 
         if ($status) {
-            return redirect()->route('admin.achievement')->with('success', 'Achievement created successfully');
+            handleSession(200, "Berhasil menambahkan Achievement");
+            return redirect()->route('admin.achievement');
         } else {
-            return redirect()->back()->with('error', 'Gagal membuat Carousel Image');
+            handleSession(400, "Gagal membuat achievement");
+            return redirect()->back()->withInput($request->all());
         }
     }
 
@@ -54,15 +57,18 @@ class AdminAchievementController extends Controller
         $validate = $achievementService->validateInputUpdate($request);
 
         if ($validate !== true) {
-            return redirect()->back()->with('validation', $validate->messages());
+            handleSession(422, $validate->messages());
+            return redirect()->back()->withInput($request->all());
         }
 
         $status = $achievementService->update($request, $id);
 
         if ($status) {
-            return redirect()->route('admin.achievement')->with('success', 'Achievement created successfully');
+            handleSession(200, "Berhasil memperbaharui Achievement");
+            return redirect()->route('admin.achievement');
         } else {
-            return redirect()->back()->with('error', 'Gagal membuat Carousel Image');
+            handleSession(400, "Gagal memperbaharui Achievement");
+            return redirect()->back()->withInput($request->all());
         }
     }
 
@@ -72,6 +78,7 @@ class AdminAchievementController extends Controller
 
         $achievement->delete();
 
-        return redirect()->route('admin.achievement')->with('success', 'Achievement deleted successfully');
+        handleSession(200, "Berhasil menghapus Achievement");
+        return redirect()->route('admin.achievement');
     }
 }

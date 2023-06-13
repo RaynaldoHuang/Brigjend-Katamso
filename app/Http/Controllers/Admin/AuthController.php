@@ -35,7 +35,8 @@ class AuthController extends Controller
         $validate = $authService->validation($request);
 
         if ($validate !== true) {
-            return redirect()->back()->with('validation', $validate->messages());
+            handleSession(422, $validate->messages());
+            return redirect()->back()->withInput($request->all());
         }
 
         $status = $authService->login($request);

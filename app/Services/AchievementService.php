@@ -13,7 +13,7 @@ class AchievementService
         DB::beginTransaction();
 
         try {
-            $path = $this->uploadFile($request->image);
+            $path = uploadFile($request->image, 'images/achievement');
 
             if (!$path) {
                 DB::rollBack();
@@ -25,8 +25,9 @@ class AchievementService
                 'description' => $request->description,
                 'student_name' => $request->student_name,
                 'type' => $request->type,
-                'year' => $request->year,
+                'date' => date('Y-m-d', strtotime($request->date)),
                 'image' => $path,
+                'created_by' => auth()->user()->id,
             ]);
 
             DB::commit();
@@ -38,21 +39,6 @@ class AchievementService
         }
     }
 
-    public function uploadFile($file)
-    {
-        $path = null;
-
-        if ($file) {
-            $image = $file;
-            $name = time() . '.' . $image->getClientOriginalExtension();
-            $destinationPath = public_path('/images/achievement');
-            $image->move($destinationPath, $name);
-            $path = '/images/achievement/' . $name;
-        }
-
-        return $path;
-    }
-
     public function validateInput($request)
     {
         $validator = Validator::make($request->all(), [
@@ -60,7 +46,7 @@ class AchievementService
             'description' => 'required|string|max:255',
             'student_name' => 'required|string|max:255',
             'type' => 'required|string|in:non-akademik,akademik,snmptn,sbmptn',
-            'year' => 'required|string|digits:4',
+            'date' => 'required|date',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5120',
         ]);
 
@@ -78,7 +64,7 @@ class AchievementService
             'description' => 'required|string|max:255',
             'student_name' => 'required|string|max:255',
             'type' => 'required|string|in:non-akademik,akademik,snmptn,sbmptn',
-            'year' => 'required|string|digits:4',
+            'date' => 'required|date',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:5120',
         ]);
 
@@ -97,13 +83,8 @@ class AchievementService
             $achievement = Achievements::findOrFail($id);
 
             if ($request->image) {
-                $oldFile = public_path($achievement->image);
 
-                if (file_exists($oldFile)) {
-                    unlink($oldFile);
-                }
-
-                $path = $this->uploadFile($request->image);
+                $path = uploadFile($request->image, 'images/achievement', $achievement->image);
 
                 if (!$path) {
                     DB::rollBack();
@@ -115,8 +96,9 @@ class AchievementService
                     'description' => $request->description,
                     'student_name' => $request->student_name,
                     'type' => $request->type,
-                    'year' => $request->year,
+                    'date' => date('Y-m-d', strtotime($request->date)),
                     'image' => $path,
+                    'updated_by' => auth()->user()->id,
                 ]);
             } else {
                 $achievement->update([
@@ -124,7 +106,8 @@ class AchievementService
                     'description' => $request->description,
                     'student_name' => $request->student_name,
                     'type' => $request->type,
-                    'year' => $request->year,
+                    'date' => date('Y-m-d', strtotime($request->date)),
+                    'updated_by' => auth()->user()->id,
                 ]);
             }
 

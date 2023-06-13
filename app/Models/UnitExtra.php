@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class UnitExtra extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $table = 'unit_extras';
 
@@ -18,6 +19,8 @@ class UnitExtra extends Model
         'alt',
         'image',
         'is_active',
+        'created_by',
+        'updated_by',
     ];
 
     public function unit(): BelongsTo

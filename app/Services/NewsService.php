@@ -45,7 +45,7 @@ class NewsService
         DB::beginTransaction();
 
         try {
-            $path = $this->uploadFile($image);
+            $path = uploadFile($image, 'images/news');
 
             if (!$image) {
                 DB::rollBack();
@@ -71,21 +71,6 @@ class NewsService
         }
     }
 
-    public function uploadFile($file)
-    {
-        $path = null;
-
-        if ($file) {
-            $image = $file;
-            $name = time() . '.' . $image->getClientOriginalExtension();
-            $destinationPath = public_path('/images/news');
-            $image->move($destinationPath, $name);
-            $path = '/images/news/' . $name;
-        }
-
-        return $path;
-    }
-
     public function update($request, $id)
     {
         $image = $request->file('image');
@@ -96,13 +81,8 @@ class NewsService
             $news = NewsActivities::findOrFail($id);
 
             if ($image) {
-                $oldFile = public_path($news->image);
 
-                if (file_exists($oldFile)) {
-                    unlink($oldFile);
-                }
-
-                $path = $this->uploadFile($image);
+                $path = $path = uploadFile($image, 'images/news', $news->image);
 
                 if (!$path) {
                     DB::rollBack();

@@ -46,15 +46,18 @@ class BrosurController extends Controller
         $validate = $brosurService->validation($request);
 
         if ($validate !== true) {
-            return redirect()->back()->with('validation', $validate->messages());
+            handleSession(422, $validate->messages());
+            return redirect()->back()->withInput($request->all());
         }
 
         $status = $brosurService->create($request);
 
         if ($status) {
-            return redirect()->route('admin.brosur')->with('success', 'Carousel Image created successfully');
+            handleSession(200, "Berhasil membuat Brosur");
+            return redirect()->route('admin.brosur');
         } else {
-            return redirect()->back()->with('error', 'Gagal membuat Carousel Image');
+            handleSession(400, "Gagal membuat Brosur");
+            return redirect()->back()->withInput($request->all());
         }
     }
 
@@ -68,15 +71,18 @@ class BrosurController extends Controller
         $validate = $brosurService->validationUpdate($request);
 
         if ($validate !== true) {
-            return redirect()->back()->with('validation', $validate->messages());
+            handleSession(422, $validate->messages());
+            return redirect()->back()->withInput($request->all());
         }
 
         $status = $brosurService->update($request, $unitId);
 
         if ($status) {
-            return redirect()->route('admin.brosur')->with('success', 'Carousel Image updated successfully');
+            handleSession(200, "Berhasil memperbaharui Brosur");
+            return redirect()->route('admin.brosur');
         } else {
-            return redirect()->back()->with('error', 'Gagal mengupdate Carousel Image');
+            handleSession(400, "Gagal memperbaharui Brosur");
+            return redirect()->back()->withInput($request->all());
         }
     }
 }

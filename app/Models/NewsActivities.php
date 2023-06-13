@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class NewsActivities extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $table = 'news_activities';
 
@@ -17,6 +18,8 @@ class NewsActivities extends Model
         'image',
         'content',
         'status',
+        'created_by',
+        'updated_by',
     ];
 
     public function getRouteKeyName()

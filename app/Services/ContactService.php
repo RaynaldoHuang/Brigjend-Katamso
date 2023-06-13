@@ -55,8 +55,7 @@ class ContactService
         DB::beginTransaction();
 
         try {
-            $contact->email = $request->email;
-            $contact->phone = $request->phone;
+            $contact->description = $request->description;
             $contact->save();
 
             DB::commit();
@@ -72,8 +71,7 @@ class ContactService
     {
         $validator = Validator::make($request->all(), [
             'name' => 'nullable|string|max:255',
-            'phone' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
+            'description' => 'required|string|max:255',
         ]);
 
         if ($validator->fails()) {

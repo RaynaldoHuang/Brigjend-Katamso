@@ -32,15 +32,18 @@ class ContactController extends Controller
         $validate = $contactService->validateInput($request);
 
         if ($validate !== true) {
-            return redirect()->back()->with('validation', $validate->messages());
+            handleSession(422, $validate->messages());
+            return redirect()->back()->withInput($request->all());
         }
 
         $status = $contactService->update($request, $id);
 
         if ($status) {
-            return redirect()->route('admin.contact')->with('success', 'Contact updated successfully');
+            handleSession(200, "Berhasil memperbaharui Contact");
+            return redirect()->route('admin.contact');
         } else {
-            return redirect()->back()->with('error', 'Gagal update Contact');
+            handleSession(400, "Gagal memperbaharui Contact");
+            return redirect()->back()->withInput($request->all());
         }
     }
 
@@ -49,16 +52,20 @@ class ContactController extends Controller
         $validate = $contactService->validateInput($request);
 
         if ($validate !== true) {
-            return redirect()->back()->with('validation', $validate->messages());
+            handleSession(422, $validate->messages());
+            return redirect()->back()->withInput($request->all());
         }
 
         $status = $contactService->create($request);
 
         if ($status) {
-            return redirect()->route('admin.contact')->with('success', 'Contact created successfully');
+            handleSession(200, "Berhasil membuat Contact");
+            return redirect()->route('admin.contact');
         } else {
-            return redirect()->back()->with('error', 'Gagal membuat Contact');
+            handleSession(400, "Gagal membuat Contact");
+            return redirect()->back()->withInput($request->all());
         }
+
     }
 
     public function create()

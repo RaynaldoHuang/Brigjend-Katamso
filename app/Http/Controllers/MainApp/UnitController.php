@@ -9,18 +9,14 @@ use App\Models\UnitExtra;
 use App\Models\UnitProgram;
 use App\Models\Units;
 
-class UnitController extends Controller
+class UnitController extends BaseController
 {
     public function unitTkDanPg()
     {
-        $contact = Contact::all();
-
         $unit = Units::where('id', 1)->first();
         $unitDetail = UnitDetail::published()->where('unit_id', 1)->first();
         $unitProgram = UnitProgram::published()->where('unit_id', 1)->get();
         $unitExtra = UnitExtra::active()->where('unit_id', 1)->get();
-
-        view()->share('contacts', $contact);
 
         return view('Unit.unittk', [
             'unit' => $unit,
@@ -32,21 +28,62 @@ class UnitController extends Controller
 
     public function unitSd()
     {
+        $unit = Units::where('id', 2)->first();
+        $unitDetail = UnitDetail::published()->where('unit_id', 2)->first();
+        $unitProgram = UnitProgram::published()->where('unit_id', 2)->get();
+        $unitExtra = UnitExtra::active()->where('unit_id', 2)->get();
 
+        return view('Unit.unitother', [
+            'unit' => $unit,
+            'unitDetail' => $unitDetail,
+            'unitProgram' => $unitProgram,
+            'unitExtra' => $unitExtra,
+        ]);
     }
 
     public function unitSmp()
     {
+        $unit = Units::where('id', 3)->first();
+        $unitDetail = UnitDetail::published()->where('unit_id', 3)->first();
+        $unitProgram = UnitProgram::published()->where('unit_id', 3)->get();
+        $unitExtra = UnitExtra::active()->where('unit_id', 3)->get();
 
+        return view('Unit.unitother', [
+            'unit' => $unit,
+            'unitDetail' => $unitDetail,
+            'unitProgram' => $unitProgram,
+            'unitExtra' => $unitExtra,
+        ]);
     }
 
     public function unitSma()
     {
+        $unit = Units::where('id', 4)->first();
+        $unitDetail = UnitDetail::published()->where('unit_id', 4)->first();
+        $unitProgram = UnitProgram::published()->where('unit_id', 4)->get();
+        $unitExtra = UnitExtra::active()->where('unit_id', 4)->get();
+
+        return view('Unit.unitother', [
+            'unit' => $unit,
+            'unitDetail' => $unitDetail,
+            'unitProgram' => $unitProgram,
+            'unitExtra' => $unitExtra,
+        ]);
 
     }
 
     public function unitSmk()
     {
+        $unit = Units::where('id', 5)->first();
+        $unitDetail = UnitDetail::published()->where('unit_id', 5)->first();
+        $unitProgram = UnitProgram::published()->where('unit_id', 5)->get();
+        $unitExtra = UnitExtra::active()->where('unit_id', 5)->get();
 
+        return view('Unit.unitother', [
+            'unit' => $unit,
+            'unitDetail' => $unitDetail,
+            'unitProgram' => $unitProgram,
+            'unitExtra' => $unitExtra,
+        ]);
     }
 }

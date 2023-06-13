@@ -6,43 +6,23 @@ use App\Http\Controllers\Controller;
 use App\Models\Achievements;
 use App\Models\Contact;
 
-class PrestasiController extends Controller
+class PrestasiController extends BaseController
 {
     public function sbmptn()
     {
-        $contact = Contact::all();
-        $achievementSbmptn = Achievements::published()->type('sbmptn')->get();
-        $achievementSnmptn = Achievements::published()->type('snmptn')->get();
-
-        view()->share('contacts', $contact);
+        $data = Achievements::published()->whereIn('type', ['sbmptn','snmptn'])->orderBy('id','desc')->get();
 
         return view('Prestasi.negeri', [
-            'sbmptn' => $achievementSbmptn,
-            'snmptn' => $achievementSnmptn,
+            'data' => $data
         ]);
     }
 
     public function akademik()
     {
-        $contact = Contact::all();
-        $akademik = Achievements::published()->type('akademik')->get();
-
-        view()->share('contacts', $contact);
+        $data = Achievements::published()->whereIn('type', ['akademik', 'non-akademik'])->orderBy('id','desc')->get();
 
         return view('Prestasi.akademik', [
-            'akademik' => $akademik,
-        ]);
-    }
-
-    public function nonAkademik()
-    {
-        $contact = Contact::all();
-        $nonAkademik = Achievements::published()->type('non-akademik')->get();
-
-        view()->share('contacts', $contact);
-
-        return view('Prestasi.nonakademik', [
-            'nonAkademik' => $nonAkademik,
+            'data' => $data,
         ]);
     }
 }

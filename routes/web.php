@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminAchievementController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminFacilityController;
 use App\Http\Controllers\Admin\AdminNewsController;
 use App\Http\Controllers\Admin\AdminUnitController;
 use App\Http\Controllers\Admin\AuthController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\MainApp\AboutController;
 use App\Http\Controllers\MainApp\BrosurController;
 use App\Http\Controllers\MainApp\ContactController;
+use App\Http\Controllers\MainApp\FasilitasController;
 use App\Http\Controllers\MainApp\HomeController;
 use App\Http\Controllers\MainApp\PrestasiController;
 use App\Http\Controllers\MainApp\UnitController;
@@ -32,17 +34,22 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('beranda');
 
 Route::get('/UnitTKdanPG', [UnitController::class, 'unitTkDanPg'])->name('unittkdanpg');
+Route::get('/UnitSD', [UnitController::class, 'unitSd'])->name('unitsd');
+Route::get('/UnitSMP', [UnitController::class, 'unitSmp'])->name('unitsmp');
+Route::get('/UnitSMA', [UnitController::class, 'unitSma'])->name('unitsma');
+Route::get('/UnitSMK', [UnitController::class, 'unitSmk'])->name('unitsmk');
 
 Route::get('/BrosurTKdanPG', [BrosurController::class, 'tkDanPg'])->name('brosurtkdanpg');
+Route::get('/BrosurSD', [BrosurController::class, 'sd'])->name('brosursd');
+Route::get('/BrosurSMP', [BrosurController::class, 'smp'])->name('brosursmp');
+Route::get('/BrosurSMA', [BrosurController::class, 'sma'])->name('brosursma');
+Route::get('/BrosurSMK', [BrosurController::class, 'smk'])->name('brosursmk');
 
 Route::get('/TentangKami', [AboutController::class, 'index'])->name('tentangkami');
 
-Route::get('/BrigjendKatamso2', function () {
-    $contact = Contact::all();
-    view()->share('contacts', $contact);
+Route::get('/BrigjendKatamso2', [AboutController::class, 'brigjendKatamso2'])->name('brigjendkatamso2');
 
-    return view('tentangkami.about1');
-})->name('brigjendkatamso2');
+Route::get('/KupuKupuTransformationCenter', [AboutController::class, 'ktc'])->name('kupukupu');
 
 Route::get('/FilosofiLogo', function () {
     $contact = Contact::all();
@@ -51,13 +58,6 @@ Route::get('/FilosofiLogo', function () {
     return view('tentangkami.logo');
 })->name('filosofilogo');
 
-Route::get('/KupuKupuTransformationCenter', function () {
-    $contact = Contact::all();
-    view()->share('contacts', $contact);
-
-    return view('ktc.ktc');
-})->name('kupukupu');
-
 Route::get('/SBMPTN&SNMPTN', [PrestasiController::class, 'sbmptn'])->name('lulusannegeri');
 
 Route::get('/PrestasiAkademik', [PrestasiController::class, 'akademik'])->name('akademik');
@@ -65,6 +65,8 @@ Route::get('/PrestasiAkademik', [PrestasiController::class, 'akademik'])->name('
 Route::get('/PrestasiNonAkademik', [PrestasiController::class, 'nonAkademik'])->name('nonakademik');
 
 Route::get('/Kontak', [ContactController::class, 'index'])->name('kontakbk');
+
+Route::get('/Fasilitas', [FasilitasController::class, 'view'])->name('fasilitas');
 
 
 // Admin Routes
@@ -158,7 +160,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 
     Route::put('unit/detail/{id}', [AdminUnitController::class, 'updateDetail'])->name('admin.units.detail.update');
 
-    Route::post('unit/program/create', [AdminUnitController::class, 'createProgram'])->name('admin.units.program.create');
+    Route::get('unit/program/create', [AdminUnitController::class, 'createProgram'])->name('admin.units.program.create');
     Route::post('unit/program/store', [AdminUnitController::class, 'storeProgram'])->name('admin.units.program.store');
 
     Route::get('unit/program/{id}', [AdminUnitController::class, 'editProgram'])->name('admin.units.program.edit');
@@ -175,4 +177,14 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 
     Route::post('unit/extra', [AdminUnitController::class, 'destroyExtra'])->name('admin.units.extra.destroy');
 
+    // Achievements
+    Route::get('facility', [AdminFacilityController::class, 'view'])->name('admin.facility');
+
+    Route::get('facility/create', [AdminFacilityController::class, 'create'])->name('admin.facility.create');
+    Route::post('facility/store', [AdminFacilityController::class, 'store'])->name('admin.facility.store');
+
+    Route::get('facility/{id}', [AdminFacilityController::class, 'edit'])->name('admin.facility.edit');
+    Route::put('facility/{id}', [AdminFacilityController::class, 'update'])->name('admin.facility.update');
+
+    Route::post('facility', [AdminFacilityController::class, 'destroy'])->name('admin.facility.destroy');
 });

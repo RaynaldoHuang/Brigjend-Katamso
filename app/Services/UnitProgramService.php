@@ -19,15 +19,12 @@ class UnitProgramService
 
 
             if ($request->image) {
+                $oldFile = null;
                 if ($unitProgram->image) {
-                    $oldFile = public_path($unitProgram->image);
-
-                    if (file_exists($oldFile)) {
-                        unlink($oldFile);
-                    }
+                    $oldFile = $unitProgram->image;
                 }
 
-                $path = $this->uploadFile($request->image);
+                $path = uploadFile($request->image, 'images/unitProgram', $oldFile);
 
                 if (!$path) {
                     DB::rollBack();
@@ -57,21 +54,6 @@ class UnitProgramService
         }
     }
 
-    public function uploadFile($file)
-    {
-        $path = null;
-
-        if ($file) {
-            $image = $file;
-            $name = time() . '.' . $image->getClientOriginalExtension();
-            $destinationPath = public_path('/images/unitProgram');
-            $image->move($destinationPath, $name);
-            $path = '/images/unitProgram/' . $name;
-        }
-
-        return $path;
-    }
-
     public function create($request)
     {
         DB::beginTransaction();
@@ -79,7 +61,7 @@ class UnitProgramService
         try {
             $unit = Units::findOrFail($request->unitId);
 
-            $path = $this->uploadFile($request->image);
+            $path = uploadFile($request->image, 'images/unitProgram');
 
             if (!$path) {
                 DB::rollBack();

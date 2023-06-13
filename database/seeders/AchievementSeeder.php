@@ -19,7 +19,7 @@ class AchievementSeeder extends Seeder
             'student_name' => 'Rizky',
             'description' => 'Juara 1 Lomba Membaca',
             'type' => 'non-akademik',
-            'year' => '2023',
+            'date' => '2023-01-01',
             'image' => 'image/prestasi 2.png',
             'is_published' => true,
         ]);
@@ -29,7 +29,7 @@ class AchievementSeeder extends Seeder
             'student_name' => 'Fajar',
             'description' => 'Juara 2 Lomba Membaca',
             'type' => 'non-akademik',
-            'year' => '2022',
+            'date' => '2023-01-01',
             'image' => 'image/prestasi 2.png',
             'is_published' => true,
         ]);
@@ -39,7 +39,7 @@ class AchievementSeeder extends Seeder
             'student_name' => 'Faris',
             'description' => 'Juara 1 Lomba Melukis',
             'type' => 'non-akademik',
-            'year' => '2023',
+            'date' => '2023-01-01',
             'image' => 'image/prestasi 2.png',
             'is_published' => true,
         ]);
@@ -49,7 +49,7 @@ class AchievementSeeder extends Seeder
             'student_name' => 'Siska Rahayu',
             'description' => 'Juara 1 Lomba Olahraga Berenang',
             'type' => 'non-akademik',
-            'year' => '2023',
+            'date' => '2023-01-01',
             'image' => 'image/prestasi 2.png',
             'is_published' => true,
         ]);
@@ -59,7 +59,7 @@ class AchievementSeeder extends Seeder
             'student_name' => 'Putri',
             'description' => 'Juara 1  Olimpiade Matematika',
             'type' => 'akademik',
-            'year' => '2023',
+            'date' => '2023-01-01',
             'image' => 'image/prestasi 2.png',
             'is_published' => true,
         ]);
@@ -69,7 +69,7 @@ class AchievementSeeder extends Seeder
             'student_name' => 'Yanti',
             'description' => 'Juara 1  Olimpiade Bahasa Inggris',
             'type' => 'akademik',
-            'year' => '2023',
+            'date' => '2023-01-01',
             'image' => 'image/prestasi 2.png',
             'is_published' => true,
         ]);
@@ -79,7 +79,7 @@ class AchievementSeeder extends Seeder
             'student_name' => 'Putri',
             'description' => 'Juara 2  Olimpiade Matematika',
             'type' => 'akademik',
-            'year' => '2022',
+            'date' => '2023-01-01',
             'image' => 'image/prestasi 2.png',
             'is_published' => true,
         ]);
@@ -89,7 +89,7 @@ class AchievementSeeder extends Seeder
             'student_name' => 'Siska',
             'description' => 'Juara 1  Olimpiade Matematika',
             'type' => 'akademik',
-            'year' => '2023',
+            'date' => '2023-01-01',
             'image' => 'image/prestasi 2.png',
             'is_published' => true,
         ]);
@@ -99,7 +99,7 @@ class AchievementSeeder extends Seeder
             'student_name' => 'Siska',
             'description' => 'Jurusan Matematika Murni',
             'type' => 'snmptn',
-            'year' => '2023',
+            'date' => '2023-01-01',
             'image' => 'image/prestasi 2.png',
             'is_published' => true,
         ]);
@@ -109,7 +109,7 @@ class AchievementSeeder extends Seeder
             'student_name' => 'Yuli',
             'description' => 'Jurusan Matematika Murni',
             'type' => 'snmptn',
-            'year' => '2023',
+            'date' => '2023-01-01',
             'image' => 'image/prestasi 2.png',
             'is_published' => true,
         ]);
@@ -119,7 +119,7 @@ class AchievementSeeder extends Seeder
             'student_name' => 'Yesti',
             'description' => 'Jurusan Matematika Murni',
             'type' => 'snmptn',
-            'year' => '2023',
+            'date' => '2023-01-01',
             'image' => 'image/prestasi 2.png',
             'is_published' => true,
         ]);
@@ -129,7 +129,7 @@ class AchievementSeeder extends Seeder
             'student_name' => 'Budi',
             'description' => 'Jurusan Fisika Kuantum',
             'type' => 'snmptn',
-            'year' => '2023',
+            'date' => '2023-01-01',
             'image' => 'image/prestasi 2.png',
             'is_published' => true,
         ]);
@@ -139,7 +139,7 @@ class AchievementSeeder extends Seeder
             'student_name' => 'Siska',
             'description' => 'Jurusan Matematika Murni',
             'type' => 'sbmptn',
-            'year' => '2023',
+            'date' => '2023-01-01',
             'image' => 'image/prestasi 2.png',
             'is_published' => true,
         ]);
@@ -149,7 +149,7 @@ class AchievementSeeder extends Seeder
             'student_name' => 'Yuli',
             'description' => 'Jurusan Matematika Murni',
             'type' => 'sbmptn',
-            'year' => '2023',
+            'date' => '2023-01-01',
             'image' => 'image/prestasi 2.png',
             'is_published' => true,
         ]);
@@ -159,7 +159,7 @@ class AchievementSeeder extends Seeder
             'student_name' => 'Yesti',
             'description' => 'Jurusan Matematika Murni',
             'type' => 'sbmptn',
-            'year' => '2023',
+            'date' => '2023-01-01',
             'image' => 'image/prestasi 2.png',
             'is_published' => true,
         ]);
@@ -169,7 +169,7 @@ class AchievementSeeder extends Seeder
             'student_name' => 'Budi',
             'description' => 'Jurusan Fisika Kuantum',
             'type' => 'sbmptn',
-            'year' => '2023',
+            'date' => '2023-01-01',
             'image' => 'image/prestasi 2.png',
             'is_published' => true,
         ]);

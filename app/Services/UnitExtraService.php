@@ -19,15 +19,12 @@ class UnitExtraService
             $unitExtra = UnitExtra::findOrFail($id);
 
             if ($request->image) {
+                $oldFile = null;
                 if ($unitExtra->image) {
-                    $oldFile = public_path($unitExtra->image);
-
-                    if (file_exists($oldFile)) {
-                        unlink($oldFile);
-                    }
+                    $oldFile = $unitExtra->image;
                 }
 
-                $path = $this->uploadFile($request->image);
+                $path = uploadFile($request->image, 'images/unitExtra', $oldFile);
 
                 if (!$path) {
                     DB::rollBack();
@@ -53,21 +50,6 @@ class UnitExtraService
             DB::rollBack();
             throw $th;
         }
-    }
-
-    public function uploadFile($file)
-    {
-        $path = null;
-
-        if ($file) {
-            $image = $file;
-            $name = time() . '.' . $image->getClientOriginalExtension();
-            $destinationPath = public_path('/images/unitExtra');
-            $image->move($destinationPath, $name);
-            $path = '/images/unitExtra/' . $name;
-        }
-
-        return $path;
     }
 
     public function create($request)

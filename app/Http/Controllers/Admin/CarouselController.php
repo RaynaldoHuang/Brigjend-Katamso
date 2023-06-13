@@ -37,15 +37,18 @@ class CarouselController extends Controller
         $validate = $carouselService->validateInput($request);
 
         if ($validate !== true) {
-            return redirect()->back()->with('validation', $validate->messages());
+            handleSession(422, $validate->messages());
+            return redirect()->back()->withInput($request->all());
         }
 
         $status = $carouselService->createCarousel($request);
 
         if ($status) {
-            return redirect()->route('admin.carousel')->with('success', 'Carousel Image created successfully');
+            handleSession(200, "Berhasil membuat Carousel");
+            return redirect()->route('admin.carousel');
         } else {
-            return redirect()->back()->with('error', 'Gagal membuat Carousel Image');
+            handleSession(400, "Gagal membuat Carousel");
+            return redirect()->back()->withInput($request->all());
         }
     }
 
@@ -54,15 +57,18 @@ class CarouselController extends Controller
         $validate = $carouselService->validateInput($request);
 
         if ($validate !== true) {
-            return redirect()->back()->with('validation', $validate->messages());
+            handleSession(422, $validate->messages());
+            return redirect()->back()->withInput($request->all());
         }
 
         $status = $carouselService->updateCarousel($request, $id);
 
         if ($status) {
-            return redirect()->route('admin.carousel')->with('success', 'Carousel Image created successfully');
+            handleSession(200, "Berhasil memperbaharui Carousel");
+            return redirect()->route('admin.carousel');
         } else {
-            return redirect()->back()->with('error', 'Gagal membuat Carousel Image');
+            handleSession(400, "Gagal memperbaharui Carousel");
+            return redirect()->back()->withInput($request->all());
         }
     }
 

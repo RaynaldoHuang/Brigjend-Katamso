@@ -38,9 +38,11 @@ class AdminController extends Controller
         $status = $adminServices->create($request);
 
         if ($status) {
-            return redirect()->route('admin.access')->with('success', 'Berhasil menambahkan admin baru');
+            handleSession(200, "Berhasil menambahkan Admin");
+            return redirect()->route('admin.access');
         } else {
-            return redirect()->back()->with('error', 'Gagal menambahkan admin baru');
+            handleSession(400, "Gagal membuat Admin");
+            return redirect()->back()->withInput($request->all());
         }
     }
 
@@ -66,9 +68,11 @@ class AdminController extends Controller
         $status = $adminServices->changePassword($request);
 
         if ($status) {
-            return redirect()->route('admin.access')->with('success', 'Berhasil mengubah password admin');
+            handleSession(200, "Berhasil mengubah password admin");
+            return redirect()->route('admin.access');
         } else {
-            return redirect()->back()->with('validationPassword', $status);
+            handleSession(400, "Gagal memperbaharui Admin");
+            return redirect()->back()->withInput($request->all());
         }
     }
 
@@ -83,9 +87,11 @@ class AdminController extends Controller
         $status = $adminServices->update($request, $id);
 
         if ($status) {
-            return redirect()->route('admin.access')->with('success', 'Berhasil mengubah data admin');
+            handleSession(200, "Berhasil memperbaharui Admin");
+            return redirect()->route('admin.access');
         } else {
-            return redirect()->back()->with('error', 'Gagal mengubah data admin');
+            handleSession(400, "Gagal memperbaharui Admin");
+            return redirect()->back()->withInput($request->all());
         }
     }
 }

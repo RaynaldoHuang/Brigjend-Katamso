@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class UnitProgram extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $table = 'unit_programs';
 
@@ -18,6 +19,8 @@ class UnitProgram extends Model
         'alt',
         'image',
         'is_published',
+        'created_by',
+        'updated_by',
     ];
 
     public function unit()

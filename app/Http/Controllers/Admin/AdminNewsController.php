@@ -32,15 +32,18 @@ class AdminNewsController extends Controller
         $validate = $newsService->validation($request);
 
         if ($validate !== true) {
-            return redirect()->back()->with('validation', $validate->messages());
+            handleSession(422, $validate->messages());
+            return redirect()->back()->withInput($request->all());
         }
 
         $status = $newsService->create($request);
 
         if ($status) {
-            return redirect()->route('admin.news')->with('success', 'News created successfully');
+            handleSession(200, "Berhasil membuat News");
+            return redirect()->route('admin.news');
         } else {
-            return redirect()->back()->with('error', 'Gagal membuat Carousel Image');
+            handleSession(400, "Gagal membuat News");
+            return redirect()->back()->withInput($request->all());
         }
     }
 
@@ -54,15 +57,18 @@ class AdminNewsController extends Controller
         $validate = $newsService->validationUpdate($request);
 
         if ($validate !== true) {
-            return redirect()->back()->with('validation', $validate->messages());
+            handleSession(422, $validate->messages());
+            return redirect()->back()->withInput($request->all());
         }
 
         $status = $newsService->update($request, $id);
 
         if ($status) {
-            return redirect()->route('admin.news')->with('success', 'News updated successfully');
+            handleSession(200, "Berhasil memperbaharui News");
+            return redirect()->route('admin.news');
         } else {
-            return redirect()->back()->with('error', 'Gagal membuat Carousel Image');
+            handleSession(400, "Gagal memperbaharui News");
+            return redirect()->back()->withInput($request->all());
         }
     }
 

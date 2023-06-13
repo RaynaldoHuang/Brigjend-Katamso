@@ -17,7 +17,13 @@ class CreateUnitsTable extends Migration
             $table->id();
             $table->string('image')->nullable();
             $table->string('name')->unique();
-            $table->timestamps();
+
+            $table->timestamp('created_at')->nullable();
+            $table->integer('created_by', 0, 1)->nullable();
+            $table->timestamp('updated_at')->nullable();
+            $table->integer('updated_by', 0, 1)->nullable();
+            $table->timestamp('deleted_at')->nullable();
+            $table->integer('deleted_by', 0, 1)->nullable();
         });
     }
 

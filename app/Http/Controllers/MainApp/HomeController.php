@@ -7,15 +7,12 @@ use App\Models\CarouselImage;
 use App\Models\Contact;
 use App\Models\NewsActivities;
 
-class HomeController extends Controller
+class HomeController extends BaseController
 {
     public function index()
     {
         $carouselImages = CarouselImage::active()->get();
-        $newsActivities = NewsActivities::active()->get();
-        $contact = Contact::all();
-
-        view()->share('contacts', $contact);
+        $newsActivities = NewsActivities::active()->limit(10)->orderBy('id','desc')->get();
 
         return view('Home.isi', [
             'carouselImages' => $carouselImages,

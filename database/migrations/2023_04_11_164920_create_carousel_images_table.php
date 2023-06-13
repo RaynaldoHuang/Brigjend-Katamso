@@ -18,7 +18,13 @@ class CreateCarouselImagesTable extends Migration
             $table->string('name');
             $table->string('image');
             $table->boolean('is_active')->default(1);
-            $table->timestamps();
+
+            $table->timestamp('created_at')->nullable();
+            $table->integer('created_by', 0, 1)->nullable();
+            $table->timestamp('updated_at')->nullable();
+            $table->integer('updated_by', 0, 1)->nullable();
+            $table->timestamp('deleted_at')->nullable();
+            $table->integer('deleted_by', 0, 1)->nullable();
         });
     }
 

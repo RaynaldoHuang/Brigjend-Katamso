@@ -28,13 +28,13 @@
                             <label for="title" class="form-label">Title</label>
                             <input type="text" class="form-control" id="title" name="title"
                                    placeholder="eg.Pengumuman Seleksi Online Tahun 2023"
-                                   value="{{$news->title}}">
+                                   value="{{old('title', $news->title)}}">
                         </div>
 
                         <div class="mb-4">
                             <label for="content" class="form-label">Content</label>
                             <textarea class="form-control" id="content" name="content"
-                                      rows="5">{{$news->content}}</textarea>
+                                      rows="5">{{old('content', $news->content)}}</textarea>
                         </div>
 
                         <div class="mb-4">

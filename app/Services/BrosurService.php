@@ -51,25 +51,17 @@ class BrosurService
 
         try {
             if ($imageFront) {
-                $oldFile = public_path($brosurFront->brosur);
+                $oldFile = $brosurFront->brosur;
 
-                if (file_exists($oldFile)) {
-                    unlink($oldFile);
-                }
-
-                $pathImageFront = self::uploadFile($imageFront);
+                $pathImageFront = uploadFile($imageFront, 'images/brosur', $oldFile);
                 $brosurFront->brosur = $pathImageFront;
                 $imageFront->save();
             }
 
             if ($imageBack) {
-                $oldFile = public_path($brosurBack->brosur);
+                $oldFile = $brosurBack->brosur;
 
-                if (file_exists($oldFile)) {
-                    unlink($oldFile);
-                }
-
-                $pathImageBack = self::uploadFile($imageBack);
+                $pathImageBack = uploadFile($imageBack, 'images/brosur', $oldFile);
                 $brosurBack->brosur = $pathImageBack;
                 $brosurBack->save();
             }
@@ -83,21 +75,6 @@ class BrosurService
         }
     }
 
-    public function uploadFile($file)
-    {
-        $path = null;
-
-        if ($file) {
-            $image = $file;
-            $name = time() . '.' . $image->getClientOriginalExtension();
-            $destinationPath = public_path('/images/brosur');
-            $image->move($destinationPath, $name);
-            $path = '/images/brosur/' . $name;
-        }
-
-        return $path;
-    }
-
     public function create($request)
     {
         $imageFront = $request->file('imageFront');
@@ -106,8 +83,8 @@ class BrosurService
         DB::beginTransaction();
 
         try {
-            $pathImageFront = $this->uploadFile($imageFront);
-            $pathImageBack = $this->uploadFile($imageBack);
+            $pathImageFront = uploadFile($imageFront, 'images/brosur');
+            $pathImageBack = uploadFile($imageBack, 'images/brosur');
 
             if (!$pathImageFront && !$pathImageBack) {
                 DB::rollBack();

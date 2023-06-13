@@ -19,10 +19,16 @@ class CreateAchievementsTable extends Migration
             $table->string('student_name');
             $table->string('description');
             $table->string('type');
-            $table->string('year', 10)->nullable();
+            $table->date('date')->nullable();
             $table->string('image')->nullable();
             $table->boolean('is_published')->default(true);
-            $table->timestamps();
+
+            $table->timestamp('created_at')->nullable();
+            $table->integer('created_by', 0, 1)->nullable();
+            $table->timestamp('updated_at')->nullable();
+            $table->integer('updated_by', 0, 1)->nullable();
+            $table->timestamp('deleted_at')->nullable();
+            $table->integer('deleted_by', 0, 1)->nullable();
         });
     }
 

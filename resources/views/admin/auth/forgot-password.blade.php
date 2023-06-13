@@ -25,7 +25,7 @@
                 <div class="mb-3">
                     <label for="email" class="form-label">Email address</label>
                     <input type="email" class="form-control" id="email" aria-describedby="emailHelp" required
-                           placeholder="cth: name@email.com" name="email">
+                           placeholder="cth: name@email.com" name="email" value="{{old('email')}}">
                     <div id="emailHelp" class="form-text">Silahkan check email Anda untuk mereset password.
                     </div>
                 </div>

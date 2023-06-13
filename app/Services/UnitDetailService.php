@@ -16,15 +16,12 @@ class UnitDetailService
             $unit = Units::findOrFail($id);
 
             if ($request->image) {
+                $oldFile = null;
                 if ($unit->detail->image) {
-                    $oldFile = public_path($unit->detail->image);
-
-                    if (file_exists($oldFile)) {
-                        unlink($oldFile);
-                    }
+                    $oldFile = $unit->detail->image;
                 }
 
-                $path = $this->uploadFile($request->image);
+                $path = uploadFile($request->image, 'images/unitDetail', $oldFile);
 
                 if (!$path) {
                     DB::rollBack();
@@ -47,21 +44,6 @@ class UnitDetailService
             DB::rollBack();
             throw $th;
         }
-    }
-
-    public function uploadFile($file)
-    {
-        $path = null;
-
-        if ($file) {
-            $image = $file;
-            $name = time() . '.' . $image->getClientOriginalExtension();
-            $destinationPath = public_path('/images/unitDetail');
-            $image->move($destinationPath, $name);
-            $path = '/images/unitDetail/' . $name;
-        }
-
-        return $path;
     }
 
     public function validateInput($request)

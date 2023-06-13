@@ -2,19 +2,22 @@
 
 @section('content')
     <div class="font-cairo text-default fw-bold fs-2 text-center mt-5">
-        Prestasi Akademik
+        Prestasi Akademik & Non-Akademik
     </div>
     <div class="container w-100 mt-4 mb-4">
         <div class="row text-center d-flex justify-content-evenly">
-            @foreach($akademik as $prestasi)
+            @foreach($data as $item)
                 <div class="col-md-3 px-auto mb-4">
-                    <img src="{{ asset($prestasi->image) }}" alt="" class="img-fluid" style="max-height:
+                    <img src="{{ asset($item->image) }}" alt="" class="img-fluid" style="max-height:
                 300px">
+                <div class="fw-bold text-default fs-5">
+                    {{ $item->student_name}}
+                </div>
                     <div class="fw-bold text-default fs-5">
-                        {{ $prestasi->title}}
+                        {{ $item->title}}
                     </div>
                     <div class="fw-medium text-default">
-                        {{ $prestasi->description}}
+                        {{ $item->description}}
                     </div>
                 </div>
             @endforeach

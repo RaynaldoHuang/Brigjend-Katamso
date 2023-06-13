@@ -86,6 +86,17 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="col py-3">
+                <a href="{{route('admin.facility')}}" class="text-decoration-none text-white">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-bars me-3"></i>
+                        <span class="fw-semibold">Fasilitas</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
         @if(auth()->user()->is_super ?? false)
             <div class="row">
                 <div class="col py-3">

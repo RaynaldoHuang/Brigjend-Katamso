@@ -1,6 +1,6 @@
 @extends('admin.dashboard.layouts.index')
 
-{{--Carousel Edit--}}
+{{-- Carousel Edit --}}
 @section('content')
     <div class="row p-3 gy-4 mx-0">
         <div class="col-12">
@@ -11,39 +11,28 @@
                 </div>
 
                 <div class="mt-2">
-                    @if(session('validation'))
+                    @if (session('validation'))
                         <div class="alert alert-danger" role="alert">
-                            @foreach(session('validation') as $error)
+                            @foreach (session('validation') as $error)
                                 <li>{{ $error[0] }}</li>
                             @endforeach
                         </div>
                     @endif
 
-                    <form action="{{route('admin.brosur.store')}}" method="POST"
-                          enctype="multipart/form-data">
+                    <form action="{{ route('admin.brosur.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-4">
                             <label for="unit_id" class="form-label">Jenjang</label>
-                            <select class="form-select" aria-label="Brosur Jenjang" id="unit_id"
-                                    name="unit_id">
-                                <option value="1">
-                                    TK dan PG
-                                </option>
-
-                                <option value="2">
-                                    SD
-                                </option>
-
-                                <option value="3">
-                                    SMP
-                                </option>
-
-                                <option value="4">
-                                    SMA
-                                </option>
-                                <option value="5">
-                                    SMK
-                                </option>
+                            <select class="form-select" aria-label="Brosur Jenjang" id="unit_id" name="unit_id">
+                                @php
+                                    $jenjang = [['id' => 1, 'text' => 'TK dan PG'], ['id' => 2, 'text' => 'SD'], ['id' => 3, 'text' => 'SMP'], ['id' => 4, 'text' => 'SMA'], ['id' => 5, 'text' => 'SMK']];
+                                    $jenjang = json_decode(json_encode($jenjang));
+                                @endphp
+                                @foreach ($jenjang as $item)
+                                    <option value="{{ $item->id }}" {{ old('unit_id') == $item->id ? 'selected' : '' }}>
+                                        {{ $item->text }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
 

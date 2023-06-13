@@ -19,7 +19,7 @@
                             </div>
                         @endif
 
-                        <a href="{{route('admin.contact.create')}}" class="btn btn-primary {{
+                        <a href="{{route('admin.contact.create')}}" class="btn btn-primary d-none {{
                         $contacts->count() >= 2 ?
                         'disabled' : '' }}">
                             <i class="fas fa-plus"></i>
@@ -32,8 +32,7 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Phone</th>
-                            <th scope="col">Email</th>
+                            <th scope="col">Description</th>
                             <th scope="col">Action</th>
                         </tr>
                         </thead>
@@ -42,23 +41,13 @@
                             <tr>
                                 <th scope="row" class="py-3">{{ $loop->iteration }}</th>
                                 <td class="fw-semibold">{{ $contact->name }}</td>
-                                <td>{{ $contact->phone }}</td>
-                                <td>{{ $contact->email }}</td>
+                                <td>{{ $contact->description }}</td>
                                 <td>
                                     <div class="d-flex gap-1">
                                         <a href="{{route('admin.contact.edit', $contact->id)}}" class="btn
                                         btn-link me-1">
                                             <i class="fas fa-edit"></i>
                                         </a>
-
-                                        <form action="{{ route('admin.contact.destroy') }}"
-                                              method="post">
-                                            @csrf
-                                            <input type="hidden" name="id" value="{{ $contact->id }}">
-                                            <button type="submit" class="btn btn-link text-danger">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </form>
                                     </div>
                                 </td>
                             </tr>

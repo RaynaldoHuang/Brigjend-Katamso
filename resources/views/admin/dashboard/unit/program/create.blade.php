@@ -25,14 +25,14 @@
                         <input type="hidden" name="unitId" value="{{$unitId}}">
                         <div class="mb-3">
                             <label for="title" class="form-label">Title</label>
-                            <input type="text" class="form-control" id="title" name="title"
+                            <input type="text" class="form-control" id="title" name="title" value="{{old('title')}}"
                                    placeholder="eg.Program Belajar">
                         </div>
 
                         <div class="mb-3">
                             <label for="description" class="form-label">Description</label>
                             <textarea class="form-control" id="description" name="description"
-                                      rows="5"></textarea>
+                                      rows="5">{{old('description')}}</textarea>
                         </div>
 
                         <div class="mb-3">

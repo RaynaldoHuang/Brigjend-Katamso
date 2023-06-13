@@ -11,7 +11,8 @@
     <style>
         .custom-topbar {
             background-color: #060585;
-            height: 40px;
+            height: auto;
+            min-height: 40px;
             padding-left: 10rem
         }
 
@@ -20,10 +21,20 @@
         }
 
         .custom-navbar {
-            height: 80px;
-            padding-left: 10rem;
+            min-height: 80px;
+            padding-left: 0;
             z-index: 2;
         }
+
+        @media (min-width: 992px) {
+            .custom-navbar {
+                min-height: 80px;
+                padding-left: 10rem;
+                z-index: 2;
+            }
+        }
+
+        .height-navbar {}
 
         .mainlogo {
             z-index: 3;
@@ -87,28 +98,32 @@
             filter: grayscale(50%);
             transition: 0.1s ease-in-out;
         }
+
+        .cursor-pointer {
+            cursor: pointer !important;
+        }
     </style>
 
     @yield ('custom.css')
 </head>
 
 <body>
-@include('Layout.topbar')
+    @include('Layout.topbar')
 
-@include('Layout.navbar')
+    @include('Layout.navbar')
 
-{{-- <div class="container"> --}}
-@yield('content')
-{{-- </div> --}}
+    {{-- <div class="container"> --}}
+    @yield('content')
+    {{-- </div> --}}
 
-@include('Layout.footer')
-{{-- script --}}
-<script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js"
+    @include('Layout.footer')
+    {{-- script --}}
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js"
         integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-@yield('custom.js')
+    <script src="{{ asset('js/jquery.js') }}"></script>
+    @yield('custom.js')
 </body>
 
 </html>

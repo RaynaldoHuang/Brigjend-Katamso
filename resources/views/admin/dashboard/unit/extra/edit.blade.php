@@ -1,6 +1,6 @@
 @extends('admin.dashboard.layouts.index')
 
-{{--Extrakulikuler Edit--}}
+{{-- Extrakulikuler Edit --}}
 @section('content')
     <div class="row p-3 gy-4 mx-0">
         <div class="col-12">
@@ -12,45 +12,39 @@
                 </div>
 
                 <div class="mt-2">
-                    @if(session('validation'))
+                    @if (session('validation'))
                         <div class="alert alert-danger" role="alert">
-                            @foreach(session('validation') as $error)
+                            @foreach (session('validation') as $error)
                                 <li>{{ $error[0] }}</li>
                             @endforeach
                         </div>
                     @endif
 
-                    <form action="{{route('admin.units.extra.update', $extras->id)}}" method="POST"
-                          enctype="multipart/form-data">
+                    <form action="{{ route('admin.units.extra.update', $extras->id) }}" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
                             <label for="name" class="form-label">Title</label>
                             <input type="text" class="form-control" id="name" name="name"
-                                   placeholder="eg.Bola Basket" value="{{ $extras->name}}">
+                                placeholder="eg.Bola Basket" value="{{ old('name', $extras->name) }}">
                         </div>
 
                         <div class="mb-3">
                             <label for="is_active" class="form-label">Status</label>
-                            <select class="form-select" aria-label="Program status" id="is_active"
-                                    name="is_active">
-                                <option value="1"
-                                        @if($extras->is_active) selected @endif
-                                >
+                            <select class="form-select" aria-label="Program status" id="is_active" name="is_active">
+                                <option value="1" @if ($extras->is_active) selected @endif>
                                     Published
                                 </option>
 
-                                <option value="0"
-                                        @if(!$extras->is_active) selected @endif
-                                >
+                                <option value="0" @if (!$extras->is_active) selected @endif>
                                     Unpublished
                                 </option>
                             </select>
                         </div>
 
                         <div class="mb-3 mt-4">
-                            <img src="{{asset($extras->image)}}" alt="Program image"
-                                 class="img-fluid w-50 rounded-3">
+                            <img src="{{ asset($extras->image) }}" alt="Program image" class="img-fluid w-50 rounded-3">
                         </div>
 
                         <div class="mb-3">
