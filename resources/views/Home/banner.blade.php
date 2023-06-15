@@ -9,7 +9,7 @@
                 <div class="position-relative">
                     <img src="{{ asset($item->image) }}" class="d-block w-100" alt={{ $item->name }}>
                     @if ($item->action && $item->url)
-                        <div class="position-absolute mx-auto" style="z-index: 3; bottom: 1rem; left: 47%;">
+                        <div class="position-absolute mx-auto" style="bottom: 1rem; left: 47%;">
                             <a href="{{ $item->url }}" target="_blank"
                                 class="btn button-color text-white shadow shadow-md">
                                 {{ $item->action }} </a>
